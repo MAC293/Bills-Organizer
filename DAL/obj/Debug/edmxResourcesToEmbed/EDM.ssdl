@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DAL.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Bill">
+    <Key>
+      <PropertyRef Name="Number" />
+    </Key>
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="DateIssue" Type="date" Nullable="false" />
+    <Property Name="ExpiringDate" Type="date" Nullable="false" />
+    <Property Name="TotalPay" Type="int" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="Image" Type="varbinary(max)" Nullable="false" />
+    <Property Name="Folder" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Folder">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="21" Nullable="false" />
+    <Property Name="Owner" Type="nchar" MaxLength="6" />
+  </EntityType>
+  <EntityType Name="Owner">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nchar" MaxLength="6" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="Password" Type="nchar" MaxLength="12" Nullable="false" />
+    <Property Name="DisplayName" Type="nchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Folder_Bill">
+    <End Role="Folder" Type="Self.Folder" Multiplicity="1" />
+    <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Folder">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Bill">
+        <PropertyRef Name="Folder" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Owner_Folder">
+    <End Role="Owner" Type="Self.Owner" Multiplicity="0..1" />
+    <End Role="Folder" Type="Self.Folder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Owner">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Folder">
+        <PropertyRef Name="Owner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DALStoreContainer">
+    <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Folder" EntityType="Self.Folder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Owner" EntityType="Self.Owner" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Folder_Bill" Association="Self.FK_Folder_Bill">
+      <End Role="Folder" EntitySet="Folder" />
+      <End Role="Bill" EntitySet="Bill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Owner_Folder" Association="Self.FK_Owner_Folder">
+      <End Role="Owner" EntitySet="Owner" />
+      <End Role="Folder" EntitySet="Folder" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DALStoreContainer" CdmEntityContainer="DBEntities">
+    <EntitySetMapping Name="Bill">
+      <EntityTypeMapping TypeName="DAL.Bill">
+        <MappingFragment StoreEntitySet="Bill">
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="DateIssue" ColumnName="DateIssue" />
+          <ScalarProperty Name="ExpiringDate" ColumnName="ExpiringDate" />
+          <ScalarProperty Name="TotalPay" ColumnName="TotalPay" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Folder" ColumnName="Folder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Folder">
+      <EntityTypeMapping TypeName="DAL.Folder">
+        <MappingFragment StoreEntitySet="Folder">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Owner">
+      <EntityTypeMapping TypeName="DAL.Owner">
+        <MappingFragment StoreEntitySet="Owner">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

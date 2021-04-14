@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DAL" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Bill">
+    <Key>
+      <PropertyRef Name="Number" />
+    </Key>
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <Property Name="DateIssue" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ExpiringDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="TotalPay" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="Folder" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Folder1" Relationship="Self.FK_Folder_Bill" FromRole="Bill" ToRole="Folder" />
+  </EntityType>
+  <EntityType Name="Folder">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="21" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Owner" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Bill" Relationship="Self.FK_Folder_Bill" FromRole="Folder" ToRole="Bill" />
+    <NavigationProperty Name="Owner1" Relationship="Self.FK_Owner_Folder" FromRole="Folder" ToRole="Owner" />
+  </EntityType>
+  <EntityType Name="Owner">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="DisplayName" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Folder" Relationship="Self.FK_Owner_Folder" FromRole="Owner" ToRole="Folder" />
+  </EntityType>
+  <Association Name="FK_Folder_Bill">
+    <End Role="Folder" Type="Self.Folder" Multiplicity="1" />
+    <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Folder">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Bill">
+        <PropertyRef Name="Folder" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Owner_Folder">
+    <End Role="Owner" Type="Self.Owner" Multiplicity="0..1" />
+    <End Role="Folder" Type="Self.Folder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Owner">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Folder">
+        <PropertyRef Name="Owner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Bill" EntityType="Self.Bill" />
+    <EntitySet Name="Folder" EntityType="Self.Folder" />
+    <EntitySet Name="Owner" EntityType="Self.Owner" />
+    <AssociationSet Name="FK_Folder_Bill" Association="Self.FK_Folder_Bill">
+      <End Role="Folder" EntitySet="Folder" />
+      <End Role="Bill" EntitySet="Bill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Owner_Folder" Association="Self.FK_Owner_Folder">
+      <End Role="Owner" EntitySet="Owner" />
+      <End Role="Folder" EntitySet="Folder" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
