@@ -7,7 +7,36 @@ using DAL;
 
 namespace BLL
 {
-    class Folder
+    public class Folder
     {
+        private String _ID;
+        private String _Name;
+        private String _Owner;
+
+        public Folder()
+        {
+            
+        }
+
+        public String ID
+        {
+            get { return _ID; }
+            set { _ID = value; }
+        }
+
+        public String Name
+        {
+            get { return _Name; }
+            set { _Name = value; }
+        }
+
+        public String Owner
+        {
+            get { return _Owner; }
+            set { _Owner = value; }
+        }
+
+
+
     }
 }
