@@ -94,6 +94,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\CSS\Style_1.css" />
+    <Content Include="Assets\CSS\Style_2.css" />
     <Content Include="Bill.aspx" />
     <Content Include="Folder.aspx" />
     <Content Include="Log In.aspx" />
@@ -111,7 +113,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Sign Up.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bill.aspx.cs">
@@ -156,6 +160,10 @@
       <Project>{87db3d2d-24b1-4298-95a0-641a77f51722}</Project>
       <Name>BLL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Images\" />
+    <Folder Include="Assets\JS\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
