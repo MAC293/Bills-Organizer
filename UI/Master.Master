@@ -30,9 +30,6 @@
     <form id="form1" runat="server">
         <div>
             
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
-
             <nav class="navbar navbar-default navbar-inverse" role="navigation">
 
                 <div class="container-fluid">
@@ -67,11 +64,13 @@
 
                 <div>
         
-                    <h1>Folders</h1>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"/>
       
                 </div>
  
             </header>
+            
+           
 
         </div>
     </form>
