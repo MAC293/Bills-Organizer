@@ -96,7 +96,14 @@
   <ItemGroup>
     <Content Include="Assets\CSS\Style_1.css" />
     <Content Include="Assets\CSS\Style_2.css" />
+    <Content Include="Assets\Images\Bills Organizer.ico" />
+    <Content Include="Assets\Images\Cable.png" />
+    <Content Include="Assets\Images\Electricity.png" />
+    <Content Include="Assets\Images\Gas.png" />
+    <Content Include="Assets\Images\Mobile Phone.png" />
+    <Content Include="Assets\Images\Water.png" />
     <Content Include="Bill.aspx" />
+    <Content Include="Bills Organizer.ico" />
     <Content Include="Folder.aspx" />
     <Content Include="Log In.aspx" />
     <Content Include="packages.config" />
@@ -162,12 +169,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\Images\" />
     <Folder Include="Assets\JS\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Bills Organizer.ico</ApplicationIcon>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
