@@ -94,6 +94,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\CSS\Folders.css" />
     <Content Include="Assets\CSS\Style_1.css" />
     <Content Include="Assets\CSS\Style_2.css" />
     <Content Include="Assets\Images\Bills Organizer.ico" />

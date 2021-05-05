@@ -13,5 +13,10 @@ namespace UI
         {
 
         }
+
+        protected void ibtnCable_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("Bill.aspx");
+        }
     }
 }
