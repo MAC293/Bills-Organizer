@@ -6,7 +6,7 @@
 
     <asp:Label ID="lblFolderName" runat="server" Text="Blank"></asp:Label>
 
-    <asp:GridView ID="grvBills" runat="server" AutoGenerateColumns="False" ShowFooter="True">
+    <asp:GridView ID="grvBills" runat="server" AutoGenerateColumns="False" ShowFooter="True" OnRowCommand="grvBills_RowCommand">
 
         <Columns>
 

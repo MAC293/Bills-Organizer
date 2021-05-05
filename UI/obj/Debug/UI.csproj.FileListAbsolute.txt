@@ -14,6 +14,7 @@ E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\roslyn\VBCSCompiler.exe.co
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\UI.dll.config
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\UI.dll
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\UI.pdb
+E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\BLL.dll
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.AI.Agent.Intercept.dll
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.AI.DependencyCollector.dll
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.AI.PerfCounterCollector.dll
@@ -22,6 +23,7 @@ E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.AI.Web.dll
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.AI.WindowsServer.dll
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.ApplicationInsights.dll
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\BLL.pdb
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.AI.DependencyCollector.xml
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.AI.ServerTelemetryChannel.xml
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.AI.Web.xml
@@ -31,5 +33,3 @@ E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.CodeDom.Provider
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\obj\Debug\UI.csprojResolveAssemblyReference.cache
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\obj\Debug\UI.dll
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\obj\Debug\UI.pdb
-E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\BLL.dll
-E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\BLL.pdb

@@ -13,5 +13,10 @@ namespace UI
         {
 
         }
+
+        protected void grvBills_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+        }
     }
 }
