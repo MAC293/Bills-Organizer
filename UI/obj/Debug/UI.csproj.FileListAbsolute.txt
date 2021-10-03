@@ -30,6 +30,8 @@ E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.AI.Web.xml
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.AI.WindowsServer.xml
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.ApplicationInsights.xml
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\Projects\IT\Bills Organizer\Bills Organizer\UI\obj\Debug\UI.csprojResolveAssemblyReference.cache
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\obj\Debug\UI.dll
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\obj\Debug\UI.pdb
+E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\DAL.dll
+E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\DAL.pdb
+E:\Projects\IT\Bills Organizer\Bills Organizer\UI\obj\Debug\UI.csprojResolveAssemblyReference.cache

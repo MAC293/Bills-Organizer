@@ -8,9 +8,18 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-    
-    </div>
+        <div>
+            <table>
+                <tr> 
+                    <td><asp:TextBox ID="txtUsernameLI" placeholder="Username" runat="server"></asp:TextBox></td></tr>
+                <tr>
+                    <td><asp:TextBox ID="txtPasswordLI" runat="server"></asp:TextBox></td></tr>
+                <tr>
+                    <td><asp:Button ID="btnLogIn" runat="server" Text="Sign In" OnClick="btnLogIn_Click" /></td></tr>
+                <tr>
+                    <td><asp:HyperLink ID="hlSignUp" runat="server">SignUp</asp:HyperLink></td></tr>
+            </table>
+        </div>
     </form>
 </body>
 </html>

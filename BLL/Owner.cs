@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using DAL;
 
 namespace BLL
@@ -16,7 +17,7 @@ namespace BLL
 
         public Owner()
         {
-            
+
         }
 
         public String ID
@@ -41,6 +42,47 @@ namespace BLL
         {
             get { return _DisplayName; }
             set { _DisplayName = value; }
+        }
+
+        public Boolean Connecting()
+        {
+            try
+            {
+                using (DBEntities context = new DBEntities())
+                {
+
+                    var ownerDAL = context.Owner.FirstOrDefault(owner => owner.ID == "");
+
+                    if (ownerDAL == null)
+                    {
+                        ownerDAL = new DAL.Owner();
+
+                        ownerDAL.ID = "Test";
+                        ownerDAL.Name = "Test";
+                        ownerDAL.Password = "Test";
+                        ownerDAL.DisplayName = "Test";
+
+                        context.Owner.AddObject(ownerDAL);
+
+                        context.SaveChanges();
+                    }
+
+                    if (ownerDAL.ID == "Test")
+                    {
+                        return true;
+                    }
+
+                    return false;
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Exception: " + ex.InnerException);
+            }
+
+            return false;
         }
 
 
