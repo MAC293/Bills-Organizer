@@ -9,10 +9,10 @@ namespace UI
         private Owner newOwner = new Owner();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                Checking();
-            }
+            //if (!IsPostBack)
+            //{
+            //    Checking();
+            //}
         }
 
         protected void btnLogIn_Click(object sender, EventArgs e)
@@ -20,17 +20,17 @@ namespace UI
 
         }
 
-        public void Checking()
-        {
-            if (newOwner.Connecting())
-            {
-                MessageBox.Show("Connected");
-            }
-            else
-            {
-                MessageBox.Show("Couldn't Connect");
-            }
-        }
+        //public void Checking()
+        //{
+        //    if (newOwner.Connecting())
+        //    {
+        //        MessageBox.Show("Connected");
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Couldn't Connect");
+        //    }
+        //}
 
 
 

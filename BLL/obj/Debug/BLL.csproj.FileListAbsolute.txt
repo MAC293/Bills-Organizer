@@ -2,6 +2,6 @@ E:\Projects\IT\Bills Organizer\Bills Organizer\BLL\bin\Debug\BLL.dll
 E:\Projects\IT\Bills Organizer\Bills Organizer\BLL\bin\Debug\BLL.pdb
 E:\Projects\IT\Bills Organizer\Bills Organizer\BLL\bin\Debug\DAL.dll
 E:\Projects\IT\Bills Organizer\Bills Organizer\BLL\bin\Debug\DAL.pdb
+E:\Projects\IT\Bills Organizer\Bills Organizer\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
 E:\Projects\IT\Bills Organizer\Bills Organizer\BLL\obj\Debug\BLL.dll
 E:\Projects\IT\Bills Organizer\Bills Organizer\BLL\obj\Debug\BLL.pdb
-E:\Projects\IT\Bills Organizer\Bills Organizer\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache

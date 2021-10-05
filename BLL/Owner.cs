@@ -44,46 +44,46 @@ namespace BLL
             set { _DisplayName = value; }
         }
 
-        public Boolean Connecting()
-        {
-            try
-            {
-                using (DBEntities context = new DBEntities())
-                {
+        //public Boolean Connecting()
+        //{
+        //    try
+        //    {
+        //        using (DBEntities context = new DBEntities())
+        //        {
 
-                    var ownerDAL = context.Owner.FirstOrDefault(owner => owner.ID == "");
+        //            var ownerDAL = context.Owner.FirstOrDefault(owner => owner.ID == "");
 
-                    if (ownerDAL == null)
-                    {
-                        ownerDAL = new DAL.Owner();
+        //            if (ownerDAL == null)
+        //            {
+        //                ownerDAL = new DAL.Owner();
+                        
+        //                ownerDAL.ID = "Test";
+        //                ownerDAL.Name = "Test";
+        //                ownerDAL.Password = "Test";
+        //                ownerDAL.DisplayName = "Test";
 
-                        ownerDAL.ID = "Test";
-                        ownerDAL.Name = "Test";
-                        ownerDAL.Password = "Test";
-                        ownerDAL.DisplayName = "Test";
+        //                context.Owner.AddObject(ownerDAL);
 
-                        context.Owner.AddObject(ownerDAL);
+        //                context.SaveChanges();
+        //            }
 
-                        context.SaveChanges();
-                    }
+        //            if (ownerDAL.ID == "Test")
+        //            {
+        //                return true;
+        //            }
 
-                    if (ownerDAL.ID == "Test")
-                    {
-                        return true;
-                    }
+        //            return false;
 
-                    return false;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                }
-            }
-            catch (Exception ex)
-            {
+        //        MessageBox.Show("Exception: " + ex.InnerException);
+        //    }
 
-                MessageBox.Show("Exception: " + ex.InnerException);
-            }
-
-            return false;
-        }
+        //    return false;
+        //}
 
 
 
