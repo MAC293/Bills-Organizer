@@ -96,6 +96,17 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Bootstrap\CSS\bootstrap-grid.css" />
+    <Content Include="Assets\Bootstrap\CSS\bootstrap-grid.min.css" />
+    <Content Include="Assets\Bootstrap\CSS\bootstrap-reboot.css" />
+    <Content Include="Assets\Bootstrap\CSS\bootstrap-reboot.min.css" />
+    <Content Include="Assets\Bootstrap\CSS\bootstrap.css" />
+    <Content Include="Assets\Bootstrap\CSS\bootstrap.min.css" />
+    <Content Include="Assets\Bootstrap\JS\bootstrap.bundle.js" />
+    <Content Include="Assets\Bootstrap\JS\bootstrap.bundle.min.js" />
+    <Content Include="Assets\Bootstrap\JS\bootstrap.js" />
+    <Content Include="Assets\Bootstrap\JS\bootstrap.min.js" />
+    <Content Include="Assets\Bootstrap\JS\jquery.js" />
     <Content Include="Assets\CSS\Folders.css" />
     <Content Include="Assets\CSS\Style_1.css" />
     <Content Include="Assets\CSS\Style_2.css" />

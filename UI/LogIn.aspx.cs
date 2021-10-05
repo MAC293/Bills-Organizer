@@ -20,6 +20,19 @@ namespace UI
 
         }
 
+        protected void lbSignUp_Click(object sender, EventArgs e)
+        {
+            if (txtUsernameSU.Text != null || txtPasswordSU.Text != null || txtDisplayNameSU.Text != null)
+            {
+                txtUsernameSU.Text = "";
+                txtPasswordSU.Text = "";
+                txtDisplayNameSU.Text = "";
+            }
+
+            ClientScript.RegisterStartupScript(GetType(), "ModalScript",
+                "$(function(){ $('#newUser').modal('show'); });", true);
+        }
+
         //public void Checking()
         //{
         //    if (newOwner.Connecting())
