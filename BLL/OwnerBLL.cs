@@ -88,7 +88,6 @@ namespace BLL
             {
                 using (DBEntities context = new DBEntities())
                 {
-                    //if (context.Detalles.Any()
                     if (!context.Owner.Any())
                     {
                         return true;
@@ -127,49 +126,86 @@ namespace BLL
             return last;
         }
 
-        //public Boolean Connecting()
-        //{
-        //    try
-        //    {
-        //        using (DBEntities context = new DBEntities())
-        //        {
+        public Boolean LogIn()
+        {
+            try
+            {
+                using (DBEntities context = new DBEntities())
+                {
+                    var ownerLogInDAL = context.Owner.FirstOrDefault(owner => owner.Name == Name
+                                                                              && owner.Password == Password);
+                    //MessageBox.Show(ownerLogInDAL.Name);
+                    //MessageBox.Show(ownerLogInDAL.Password);
 
-        //            var ownerDAL = context.Owner.FirstOrDefault(owner => owner.ID == "");
+                    if (ownerLogInDAL != null && PasswordComparison(Password.Trim(), ownerLogInDAL.Password.Trim()) &&
+                        UsernameComparison(Name.Trim(), ownerLogInDAL.Name.Trim()))
+                    {
 
-        //            if (ownerDAL == null)
-        //            {
-        //                ownerDAL = new DAL.Owner();
+                        if (ownerLogInDAL != null)
+                        {
 
-        //                ownerDAL.ID = "Test";
-        //                ownerDAL.Name = "Test";
-        //                ownerDAL.Password = "Test";
-        //                ownerDAL.DisplayName = "Test";
+                            context.SaveChanges();
 
-        //                context.Owner.AddObject(ownerDAL);
+                            return true;
+                        }
+                    }
 
-        //                context.SaveChanges();
-        //            }
+                    return false;
 
-        //            if (ownerDAL.ID == "Test")
-        //            {
-        //                return true;
-        //            }
+                }
 
-        //            return false;
+            }
+            catch (Exception ex)
+            {
 
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
+                MessageBox.Show("Exception: " + ex);
+            }
 
-        //        MessageBox.Show("Exception: " + ex.InnerException);
-        //    }
+            return false;
+        }
 
-        //    return false;
-        //}
+        public void SendDisplayName(String dName, String dPassword)
+        {
+            try
+            {
+                using (DBEntities context = new DBEntities())
+                {
+                    var ownerLogInDAL = context.Owner.FirstOrDefault(owner => owner.Name == dName
+                                                                              && owner.Password == dPassword);
 
+                    if (ownerLogInDAL != null)
+                    {
+                        DisplayName = ownerLogInDAL.DisplayName;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception: " + ex);
+            }
+        }
 
+        private Boolean UsernameComparison(String input, String source)
+        {
+            if (String.Equals(input, source, StringComparison.CurrentCulture))
+            {
+                return true;
+            }
 
+            return false;
+        }
+
+        private Boolean PasswordComparison(String input, String source)
+        {
+
+            if (String.Equals(input, source, StringComparison.CurrentCulture))
+            {
+
+                return true;
+            }
+
+            return false;
+        }
 
     }
 }

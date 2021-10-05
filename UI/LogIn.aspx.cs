@@ -19,6 +19,21 @@ namespace UI
         protected void btnLogIn_Click(object sender, EventArgs e)
         {
 
+            OwnerBLL loginOwner = new OwnerBLL();
+
+            loginOwner.Name = txtUsernameSI.Text;
+            loginOwner.Password = txtPasswordSI.Text;
+
+            if (newOwner.LogIn())
+            {
+                loginOwner.SendDisplayName(loginOwner.Name, loginOwner.Password);
+                Session["DisplayName"] = loginOwner.DisplayName;
+                Response.Redirect("/Master.Master", false);
+            }
+            else
+            {
+                MessageBox.Show("Check username or password!");
+            }
         }
 
         protected void lbSignUp_Click(object sender, EventArgs e)
