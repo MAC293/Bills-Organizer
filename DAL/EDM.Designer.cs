@@ -493,7 +493,7 @@ namespace DAL
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String Owner
+        public Nullable<global::System.Int32> Owner
         {
             get
             {
@@ -503,13 +503,13 @@ namespace DAL
             {
                 OnOwnerChanging(value);
                 ReportPropertyChanging("Owner");
-                _Owner = StructuralObject.SetValidValue(value, true, "Owner");
+                _Owner = StructuralObject.SetValidValue(value, "Owner");
                 ReportPropertyChanged("Owner");
                 OnOwnerChanged();
             }
         }
-        private global::System.String _Owner;
-        partial void OnOwnerChanging(global::System.String value);
+        private Nullable<global::System.Int32> _Owner;
+        partial void OnOwnerChanging(Nullable<global::System.Int32> value);
         partial void OnOwnerChanged();
 
         #endregion
@@ -597,7 +597,7 @@ namespace DAL
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="password">Initial value of the Password property.</param>
         /// <param name="displayName">Initial value of the DisplayName property.</param>
-        public static Owner CreateOwner(global::System.String id, global::System.String name, global::System.String password, global::System.String displayName)
+        public static Owner CreateOwner(global::System.Int32 id, global::System.String name, global::System.String password, global::System.String displayName)
         {
             Owner owner = new Owner();
             owner.ID = id;
@@ -616,7 +616,7 @@ namespace DAL
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String ID
+        public global::System.Int32 ID
         {
             get
             {
@@ -628,14 +628,14 @@ namespace DAL
                 {
                     OnIDChanging(value);
                     ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value, false, "ID");
+                    _ID = StructuralObject.SetValidValue(value, "ID");
                     ReportPropertyChanged("ID");
                     OnIDChanged();
                 }
             }
         }
-        private global::System.String _ID;
-        partial void OnIDChanging(global::System.String value);
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
         partial void OnIDChanged();
     
         /// <summary>

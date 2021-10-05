@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="Bill.cs" />
     <Compile Include="Folder.cs" />
-    <Compile Include="Owner.cs" />
+    <Compile Include="OwnerBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

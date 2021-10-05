@@ -38,8 +38,7 @@
                     <div class="modal-header">
                         <asp:Label ID="Label1" runat="server" Text="Type Required Information"></asp:Label>
                     </div>
-                    
-                    
+
                     <div class="modal-body">
                        <table>
                            <tr>
@@ -57,7 +56,7 @@
                     <div class="modal-footer">
                         <%--OnClick="btnCreateEvent_Click"--%>
                         <asp:Button ID="btnRegister" class="btn btn-primary" runat="server" Text="Register"
-                                    UseSubmitBehavior="True" />
+                                    UseSubmitBehavior="True" OnClick="btnRegister_Click" />
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
 

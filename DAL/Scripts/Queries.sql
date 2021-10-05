@@ -8,3 +8,4 @@ WHERE ID IN ('Black', 'Grey', 'Light Blue', 'Magenta', 'Yellow');
 
 SELECT * FROM Owner;
 DELETE Owner;
+

@@ -18,13 +18,13 @@
     </Key>
     <Property Name="ID" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="Name" Type="nchar" MaxLength="21" Nullable="false" />
-    <Property Name="Owner" Type="nchar" MaxLength="6" />
+    <Property Name="Owner" Type="int" />
   </EntityType>
   <EntityType Name="Owner">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="nchar" MaxLength="6" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
     <Property Name="Name" Type="nchar" MaxLength="30" Nullable="false" />
     <Property Name="Password" Type="nchar" MaxLength="12" Nullable="false" />
     <Property Name="DisplayName" Type="nchar" MaxLength="15" Nullable="false" />

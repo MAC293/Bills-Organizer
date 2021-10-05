@@ -6,7 +6,8 @@ namespace UI
 {
     public partial class LogIn : System.Web.UI.Page
     {
-        private Owner newOwner = new Owner();
+        private OwnerBLL newOwner = new OwnerBLL();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //if (!IsPostBack)
@@ -33,19 +34,28 @@ namespace UI
                 "$(function(){ $('#newUser').modal('show'); });", true);
         }
 
-        //public void Checking()
-        //{
-        //    if (newOwner.Connecting())
-        //    {
-        //        MessageBox.Show("Connected");
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Couldn't Connect");
-        //    }
-        //}
+        protected void btnRegister_Click(object sender, EventArgs e)
+        {
+            OwnerBLL newOwner = new OwnerBLL();
 
+            newOwner.Name = txtUsernameSU.Text;
+            newOwner.Password = txtPasswordSU.Text;
+            newOwner.DisplayName = txtDisplayNameSU.Text;
 
-
+            newOwner.Create();
+        }
     }
+
+    //public void Checking()
+    //{
+    //    if (newOwner.Connecting())
+    //    {
+    //        MessageBox.Show("Connected");
+    //    }
+    //    else
+    //    {
+    //        MessageBox.Show("Couldn't Connect");
+    //    }
+    //}
+
 }

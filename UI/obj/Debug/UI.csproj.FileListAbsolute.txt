@@ -33,3 +33,5 @@ E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.CodeDom.Provider
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\obj\Debug\UI.csprojResolveAssemblyReference.cache
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\obj\Debug\UI.dll
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\obj\Debug\UI.pdb
+E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\DAL.dll
+E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\DAL.pdb
