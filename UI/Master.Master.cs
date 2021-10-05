@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 namespace UI
 {
@@ -21,6 +22,13 @@ namespace UI
         {
             DisplayName = (String) Session["DisplayName"];
             lblDisplayName.Text = DisplayName;
+        }
+
+        protected void btnLogOut_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show("Close");
+            Session.Abandon();
+            Response.Redirect("/LogIn.aspx", false);
         }
     }
 }

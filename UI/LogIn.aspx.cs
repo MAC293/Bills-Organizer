@@ -24,11 +24,11 @@ namespace UI
             loginOwner.Name = txtUsernameSI.Text;
             loginOwner.Password = txtPasswordSI.Text;
 
-            if (newOwner.LogIn())
+            if (loginOwner.LogIn())
             {
                 loginOwner.SendDisplayName(loginOwner.Name, loginOwner.Password);
                 Session["DisplayName"] = loginOwner.DisplayName;
-                Response.Redirect("/Master.Master", false);
+                Response.Redirect("/Folder.aspx", false);
             }
             else
             {
