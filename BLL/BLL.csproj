@@ -42,8 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bill.cs" />
-    <Compile Include="Folder.cs" />
+    <Compile Include="BillBLL.cs" />
+    <Compile Include="FolderBLL.cs" />
     <Compile Include="OwnerBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

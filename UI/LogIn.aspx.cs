@@ -28,6 +28,9 @@ namespace UI
             {
                 loginOwner.SendDisplayName(loginOwner.Name, loginOwner.Password);
                 Session["DisplayName"] = loginOwner.DisplayName;
+
+                int sendID = loginOwner.SendID(loginOwner.Name, loginOwner.Password);
+                Session["OwnerID"] = sendID;
                 Response.Redirect("/Folder.aspx", false);
             }
             else

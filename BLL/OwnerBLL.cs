@@ -185,6 +185,32 @@ namespace BLL
             }
         }
 
+        public int SendID(String dName, String dPassword)
+        {
+            int id = 0;
+
+            try
+            {
+                using (DBEntities context = new DBEntities())
+                {
+                    var ownerLogInDAL = context.Owner.FirstOrDefault(owner => owner.Name == dName
+                                                                              && owner.Password == dPassword);
+
+                    if (ownerLogInDAL != null)
+                    {
+                        id = ownerLogInDAL.ID;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception: " + ex);
+            }
+
+            return id;
+        }
+
+
         private Boolean UsernameComparison(String input, String source)
         {
             if (String.Equals(input, source, StringComparison.CurrentCulture))
