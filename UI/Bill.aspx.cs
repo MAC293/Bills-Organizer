@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
+using BLL;
 
 namespace UI
 {
@@ -11,6 +13,8 @@ namespace UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            String folderID = (String)Session["FolderID"];
+            MessageBox.Show(folderID);
 
         }
 

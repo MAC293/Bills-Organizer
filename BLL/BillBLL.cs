@@ -7,7 +7,7 @@ using DAL;
 
 namespace BLL
 {
-    public class Bill
+    public class BillBLL
     {
         private int _Number;
         private DateTime _DateIssue;
@@ -17,7 +17,7 @@ namespace BLL
         private Byte[] _Document;
         private int _Folder;
 
-        public Bill()
+        public BillBLL()
         {
             
         }

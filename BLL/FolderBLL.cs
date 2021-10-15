@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace BLL
 
         public FolderBLL()
         {
-            
+
         }
 
         public String ID
@@ -43,39 +44,37 @@ namespace BLL
             {
                 using (DBEntities context = new DBEntities())
                 {
-                    if (!CheckUser(owner))
-                    {
-                        
-                    }
 
-
-                    FolderBLL water = new FolderBLL();
-                    water.ID = "WTR0";
+                    Folder water = new Folder();
+                    water.ID = "WTR" + owner;
                     water.Name = "Water";
+                    water.Owner = owner;
 
-                    FolderBLL gas = new FolderBLL();
-                    gas.ID = "GS1";
+                    Folder gas = new Folder();
+                    gas.ID = "GS1" + owner;
                     gas.Name = "Gas";
+                    gas.Owner = owner;
 
-                    FolderBLL cable = new FolderBLL();
-                    cable.ID = "CBE2";
+                    Folder cable = new Folder();
+                    cable.ID = "CBE2" + owner;
                     cable.Name = "Cable";
+                    cable.Owner = owner;
 
-                    FolderBLL electricity = new FolderBLL();
-                    electricity.ID = "ETY3";
+                    Folder electricity = new Folder();
+                    electricity.ID = "ETY3" + owner;
                     electricity.Name = "Electricity";
+                    electricity.Owner = owner;
 
-                    FolderBLL mobilePhone = new FolderBLL();
-                    mobilePhone.ID = "MP4";
+                    Folder mobilePhone = new Folder();
+                    mobilePhone.ID = "MP4" + owner;
                     mobilePhone.Name = "Mobile Phone";
+                    mobilePhone.Owner = owner;
 
-
-
-                    newOwner.Name = Name;
-                    newOwner.Password = Password;
-                    newOwner.DisplayName = DisplayName;
-
-                    context.Owner.AddObject(newOwner);
+                    context.Folder.AddObject(water);
+                    context.Folder.AddObject(gas);
+                    context.Folder.AddObject(cable);
+                    context.Folder.AddObject(electricity);
+                    context.Folder.AddObject(mobilePhone);
 
                     context.SaveChanges();
 
@@ -117,6 +116,84 @@ namespace BLL
 
             return false;
         }
+
+        //public int FolderOWner(int user)
+        //{
+        //    int folderOwner = 0;
+
+        //    try
+        //    {
+        //        using (DBEntities context = new DBEntities())
+        //        {
+        //            var folderDAL = context.Folder.FirstOrDefault(folder => folder.Owner == user);
+
+        //            if (folderDAL != null)
+        //            {
+        //                folderOwner = user;
+        //            }
+                    
+        //            return folderOwner;
+        //        }
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        MessageBox.Show("Exception: " + ex);
+        //    }
+
+        //    return 0;
+        //}
+
+        public String FolderID(String folderName, int folderOwner)
+        {
+            String id = String.Empty;
+
+            try
+            {
+                using (DBEntities context = new DBEntities())
+                {
+                    var folderDAL = context.Folder.FirstOrDefault(folder => folder.Name == folderName && 
+                                                                            folder.Owner == folderOwner);
+
+                    if (folderDAL != null)
+                    {
+                        switch (folderDAL.Name)
+                        {
+                            case "Cable":
+                                id = "CBE";
+                                break;
+
+                            case "Water":
+                                id = "WTR";
+                                break;
+
+                            case "Gas":
+                                id = "CBE";
+                                break;
+
+                            case "Electricity":
+                                id = "ETY";
+                                break;
+
+                            case "Mobile Phone":
+                                id = "CBE";
+                                break;
+                        }
+
+                        return id;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception: " + ex);
+
+            }
+
+            return String.Empty;
+        }
+
 
 
 

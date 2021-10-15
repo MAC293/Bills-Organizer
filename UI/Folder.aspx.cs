@@ -15,12 +15,20 @@ namespace UI
         protected void Page_Load(object sender, EventArgs e)
         {
           int id = (int) Session["OwnerID"];
-          folders.Create(id);
+
+          if (!folders.CheckUser(id))
+          {
+              folders.Create(id);
+          }
 
         }
 
         protected void ibtnCable_Click(object sender, ImageClickEventArgs e)
         {
+            String folderID = folders.FolderID("Cable", (int)Session["OwnerID"]);
+
+            Session["FolderID"] = folderID;
+
             Response.Redirect("Bill.aspx");
         }
     }
