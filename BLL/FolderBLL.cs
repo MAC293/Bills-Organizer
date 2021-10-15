@@ -51,22 +51,22 @@ namespace BLL
                     water.Owner = owner;
 
                     Folder gas = new Folder();
-                    gas.ID = "GS1" + owner;
+                    gas.ID = "GS" + owner;
                     gas.Name = "Gas";
                     gas.Owner = owner;
 
                     Folder cable = new Folder();
-                    cable.ID = "CBE2" + owner;
+                    cable.ID = "CBE" + owner;
                     cable.Name = "Cable";
                     cable.Owner = owner;
 
                     Folder electricity = new Folder();
-                    electricity.ID = "ETY3" + owner;
+                    electricity.ID = "ETY" + owner;
                     electricity.Name = "Electricity";
                     electricity.Owner = owner;
 
                     Folder mobilePhone = new Folder();
-                    mobilePhone.ID = "MP4" + owner;
+                    mobilePhone.ID = "MP" + owner;
                     mobilePhone.Name = "Mobile Phone";
                     mobilePhone.Owner = owner;
 
@@ -158,7 +158,7 @@ namespace BLL
 
                     if (folderDAL != null)
                     {
-                        switch (folderDAL.Name)
+                        switch (folderName)
                         {
                             case "Cable":
                                 id = "CBE";
