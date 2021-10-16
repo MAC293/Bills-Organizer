@@ -30,9 +30,8 @@ namespace UI
         {
             String folderID = folders.FolderID("Cable", (int)Session["OwnerID"]);
 
-            MessageBox.Show(folderID);
-
             Session["FolderID"] = folderID;
+            Session["FolderName"] = "Cable";
 
             Response.Redirect("Bill.aspx");
         }
@@ -42,6 +41,7 @@ namespace UI
             String folderID = folders.FolderID("Electricity", (int)Session["OwnerID"]);
 
             Session["FolderID"] = folderID;
+            Session["FolderName"] = "Electricity";
 
             Response.Redirect("Bill.aspx");
         }
@@ -51,6 +51,7 @@ namespace UI
             String folderID = folders.FolderID("Gas", (int)Session["OwnerID"]);
 
             Session["FolderID"] = folderID;
+            Session["FolderName"] = "Gas";
 
             Response.Redirect("Bill.aspx");
         }
@@ -60,6 +61,7 @@ namespace UI
             String folderID = folders.FolderID("Mobile Phone", (int)Session["OwnerID"]);
 
             Session["FolderID"] = folderID;
+            Session["FolderName"] = "Mobile Phone";
 
             Response.Redirect("Bill.aspx");
         }
@@ -69,6 +71,7 @@ namespace UI
             String folderID = folders.FolderID("Water", (int)Session["OwnerID"]);
 
             Session["FolderID"] = folderID;
+            Session["FolderName"] = "Water";
 
             Response.Redirect("Bill.aspx");
         }

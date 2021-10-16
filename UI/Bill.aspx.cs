@@ -13,10 +13,11 @@ namespace UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            lblFolderName.Text = (String)Session["FolderName"];
+
             if (!IsPostBack)
             {
-                String folderID = (String)Session["FolderID"];
-                MessageBox.Show(folderID);
+                
             }
 
         }
