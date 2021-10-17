@@ -33,7 +33,7 @@ namespace UI
             Session["FolderID"] = folderID;
             Session["FolderName"] = "Cable";
 
-            Response.Redirect("Bill.aspx");
+            Response.Redirect("Bills.aspx");
         }
 
         protected void ibtnElectricity_Click(object sender, ImageClickEventArgs e)
@@ -43,7 +43,7 @@ namespace UI
             Session["FolderID"] = folderID;
             Session["FolderName"] = "Electricity";
 
-            Response.Redirect("Bill.aspx");
+            Response.Redirect("Bills.aspx");
         }
 
         protected void ibtnGas_Click(object sender, ImageClickEventArgs e)
@@ -53,7 +53,7 @@ namespace UI
             Session["FolderID"] = folderID;
             Session["FolderName"] = "Gas";
 
-            Response.Redirect("Bill.aspx");
+            Response.Redirect("Bills.aspx");
         }
 
         protected void ibtnMobilePhone_Click(object sender, ImageClickEventArgs e)
@@ -63,7 +63,7 @@ namespace UI
             Session["FolderID"] = folderID;
             Session["FolderName"] = "Mobile Phone";
 
-            Response.Redirect("Bill.aspx");
+            Response.Redirect("Bills.aspx");
         }
 
         protected void ibtnWater_Click(object sender, ImageClickEventArgs e)
@@ -73,7 +73,7 @@ namespace UI
             Session["FolderID"] = folderID;
             Session["FolderName"] = "Water";
 
-            Response.Redirect("Bill.aspx");
+            Response.Redirect("Bills.aspx");
         }
     }
 }

@@ -1,12 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Bill.aspx.cs" Inherits="UI.Bill" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Bills.aspx.cs" Inherits="UI.Bills" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <asp:Label ID="lblFolderName" runat="server" Text="Blank"></asp:Label>
+    <asp:Label ID="lblFolderName" runat="server"></asp:Label>
 
-    <asp:GridView ID="grvBills" runat="server" AutoGenerateColumns="False" ShowFooter="True" OnRowCommand="grvBills_RowCommand">
+    <asp:GridView ID="grvFees" runat="server" AutoGenerateColumns="False" ShowFooter="True" OnRowCommand="grvFees_RowCommand">
 
         <Columns>
 

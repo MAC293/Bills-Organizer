@@ -10,7 +10,7 @@
 namespace UI {
     
     
-    public partial class Bill {
+    public partial class Bills {
         
         /// <summary>
         /// lblFolderName control.
@@ -22,12 +22,12 @@ namespace UI {
         protected global::System.Web.UI.WebControls.Label lblFolderName;
         
         /// <summary>
-        /// grvBills control.
+        /// grvFees control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvBills;
+        protected global::System.Web.UI.WebControls.GridView grvFees;
     }
 }

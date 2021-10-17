@@ -116,7 +116,7 @@
     <Content Include="Assets\Images\Gas.png" />
     <Content Include="Assets\Images\Mobile Phone.png" />
     <Content Include="Assets\Images\Water.png" />
-    <Content Include="Bill.aspx" />
+    <Content Include="Bills.aspx" />
     <Content Include="Bills Organizer.ico" />
     <Content Include="Folder.aspx" />
     <Content Include="LogIn.aspx" />
@@ -138,12 +138,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bill.aspx.cs">
-      <DependentUpon>Bill.aspx</DependentUpon>
+    <Compile Include="Bills.aspx.cs">
+      <DependentUpon>Bills.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bill.aspx.designer.cs">
-      <DependentUpon>Bill.aspx</DependentUpon>
+    <Compile Include="Bills.aspx.designer.cs">
+      <DependentUpon>Bills.aspx</DependentUpon>
     </Compile>
     <Compile Include="Folder.aspx.cs">
       <DependentUpon>Folder.aspx</DependentUpon>
