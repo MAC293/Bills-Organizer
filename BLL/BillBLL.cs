@@ -99,7 +99,7 @@ namespace BLL
             return false;
         }
 
-        public void RetrieveBills_1(String folderID)
+        public void RetrieveBills(String folderID)
         {
             try
             {
@@ -118,9 +118,11 @@ namespace BLL
 
                         String folder = billDAL.ElementAt(i).Folder;
 
-                        MessageBox.Show("String folder = billDAL.ElementAt(i).Folder " +billDAL.ElementAt(i).Folder);
+                        //MessageBox.Show("String folder = billDAL.ElementAt(i).Folder " +billDAL.ElementAt(i).Folder);
 
-                        if (folder.Trim().Equals(folderID.Trim()))
+                        //if (folder.Trim().Equals(folderID.Trim()))
+                        //{
+                        if (billDAL.ElementAt(i).Folder.Trim().Equals(folderID.Trim()))
                         {
                             //MessageBox.Show(billDAL.ElementAt(i).Folder);
 

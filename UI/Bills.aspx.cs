@@ -40,8 +40,8 @@ namespace UI
 
                 if (Bill.BillsExistence(folderID))
                 {
-                    //MessageBox.Show("Bill.BillsExistence is TRUE");
-                    Bill.RetrieveBills_1(folderID);
+                    //MessageBox.Show("Bill.BillsExistence is TRUE"); 
+                    Bill.RetrieveBills(folderID);
 
                     if (Bill.Bills != null)
                     {
