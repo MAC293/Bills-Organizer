@@ -99,21 +99,31 @@ namespace BLL
             return false;
         }
 
-        public void RetrieveBills(String folderID)
+        public void RetrieveBills_1(String folderID)
         {
             try
             {
                 using (DBEntities context = new DBEntities())
                 {
+                    //MessageBox.Show("FolderID, Bill BLL(1):" + folderID);
+
                     var billDAL = context.Bill.Select((bill =>
                         new { bill.Number, bill.DateIssue, bill.ExpiringDate, bill.TotalPay, bill.Status, bill.Image, bill.Folder })).ToList();
 
 
                     for (int i = 0; i < billDAL.Count(); i++)
                     {
+                        //MessageBox.Show("Folder: "+billDAL.ElementAt(i).Folder+" Position: "+i);
+                        //MessageBox.Show("FolderID, Bill BLL(2): " + folderID);
 
-                        if (billDAL.ElementAt(i).Folder == folderID)
+                        String folder = billDAL.ElementAt(i).Folder;
+
+                        MessageBox.Show("String folder = billDAL.ElementAt(i).Folder " +billDAL.ElementAt(i).Folder);
+
+                        if (folder.Trim().Equals(folderID.Trim()))
                         {
+                            //MessageBox.Show(billDAL.ElementAt(i).Folder);
+
                             var billBLL = new BillBLL();
 
                             billBLL.Number = billDAL.ElementAt(i).Number;
@@ -125,6 +135,7 @@ namespace BLL
                             billBLL.Folder = billDAL.ElementAt(i).Folder;
 
                             Bills.Add(billBLL);
+
                         }
                     }
                 }
@@ -136,16 +147,59 @@ namespace BLL
 
                 MessageBox.Show(ex.Message);
             }
+
         }
 
+        public Boolean RetrieveBills_2(String folderID)
+        {
+            try
+            {
+                using (DBEntities context = new DBEntities())
+                {
+                    //MessageBox.Show("FolderID, Bill BLL "+folderID);
+
+                    var billDAL = context.Bill.Select((bill =>
+                        new
+                            {   bill.Number,
+                                bill.DateIssue,
+                                bill.ExpiringDate,
+                                bill.TotalPay,
+                                bill.Status,
+                                bill.Image,
+                                bill.Folder }
+                        )).ToList();
 
 
+                    foreach (var fee in billDAL)
+                    {
+                        if (fee.Folder == folderID)
+                        {
+                            var billBLL = new BillBLL();
 
+                            billBLL.Number = fee.Number;
+                            billBLL.DateIssue = fee.DateIssue;
+                            billBLL.ExpiringDate = fee.ExpiringDate;
+                            billBLL.TotalPay = fee.TotalPay;
+                            billBLL.Status = fee.Status;
+                            billBLL.Document = fee.Image;
+                            billBLL.Folder = fee.Folder;
 
+                            Bills.Add(billBLL);
+                        }
+                    }
 
+                }
 
+            }
 
+            catch (Exception ex)
+            {
 
+                MessageBox.Show(ex.Message);
+            }
+
+            return true;
+        }
 
     }
 }

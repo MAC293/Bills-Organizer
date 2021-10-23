@@ -161,23 +161,23 @@ namespace BLL
                         switch (folderName)
                         {
                             case "Cable":
-                                id = "CBE";
+                                id = "CBE" + folderOwner;
                                 break;
 
                             case "Water":
-                                id = "WTR";
+                                id = "WTR" + folderOwner;
                                 break;
 
                             case "Gas":
-                                id = "CBE";
+                                id = "GS" + folderOwner;
                                 break;
 
                             case "Electricity":
-                                id = "ETY";
+                                id = "ETY" + folderOwner;
                                 break;
 
                             case "Mobile Phone":
-                                id = "CBE";
+                                id = "MP" + folderOwner;
                                 break;
                         }
 

@@ -24,13 +24,20 @@ namespace UI
                 }
             }
 
+            //MessageBox.Show("OwnerID, Folder: "+id);
+
         }
 
         protected void ibtnCable_Click(object sender, ImageClickEventArgs e)
         {
             String folderID = folders.FolderID("Cable", (int)Session["OwnerID"]);
 
+            //MessageBox.Show("OwnerID, Folder, Cable Clicked: " + (int)Session["OwnerID"]);
+            //MessageBox.Show("FolderID, Folder, Cable Clicked: " + folderID);
+            //MessageBox.Show("Session[FolderID], Cable Clicked, Folder: " + folderID);
+
             Session["FolderID"] = folderID;
+            //MessageBox.Show("Session[FolderID], Cable Clicked, Folder: " + (String)Session["FolderID"]);
             Session["FolderName"] = "Cable";
 
             Response.Redirect("Bills.aspx");

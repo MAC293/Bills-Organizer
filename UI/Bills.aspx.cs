@@ -11,14 +11,15 @@ namespace UI
 {
     public partial class Bills : System.Web.UI.Page
     {
-        private List<BillBLL> _Fees;
+        //private List<BillBLL> _Fees;
         private BillBLL _Bill;
 
-        public List<BillBLL> Fees
-        {
-            get { return _Fees; }
-            set { _Fees = value; }
-        }
+        //public List<BillBLL> Fees
+        //{
+        //    get { return _Fees; }
+        //    set { _Fees = value; }
+        //}
+
 
         public BillBLL Bill
         {
@@ -28,21 +29,35 @@ namespace UI
         protected void Page_Load(object sender, EventArgs e)
         {
             lblFolderName.Text = (String)Session["FolderName"];
-            Bill = new BillBLL();
 
             if (!IsPostBack)
             {
                 String folderID = (String)Session["FolderID"];
+                //MessageBox.Show(folderID);
+
+                Bill = new BillBLL();
+                //Bill.Bills = new List<BillBLL>();
 
                 if (Bill.BillsExistence(folderID))
                 {
-                    FillGridView(folderID);
+                    //MessageBox.Show("Bill.BillsExistence is TRUE");
+                    Bill.RetrieveBills_1(folderID);
+
+                    if (Bill.Bills != null)
+                    {
+                        if (Bill.Bills.Count > 0)
+                        {
+                            FillGridView();
+                        }
+                    }
+
+
                 }
                 else
                 {
-                    MessageBox.Show("You have no bills to show");
                     DisplayEmptyGridView();
                 }
+
             }
 
         }
@@ -52,11 +67,9 @@ namespace UI
 
         }
 
-        protected void FillGridView(String folderID)
+        protected void FillGridView()
         {
-            Bill.RetrieveBills(folderID);
-            Fees = Bill.Bills;
-            grvFees.DataSource = Fees;
+            grvFees.DataSource = Bill.Bills;
             grvFees.DataBind();
         }
 
