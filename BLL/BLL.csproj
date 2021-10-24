@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BillBLL.cs" />
+    <Compile Include="BillStatusBLL.cs" />
     <Compile Include="FolderBLL.cs" />
     <Compile Include="OwnerBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

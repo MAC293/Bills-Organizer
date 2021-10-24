@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -116,7 +117,7 @@ namespace BLL
                         //MessageBox.Show("Folder: "+billDAL.ElementAt(i).Folder+" Position: "+i);
                         //MessageBox.Show("FolderID, Bill BLL(2): " + folderID);
 
-                        String folder = billDAL.ElementAt(i).Folder;
+                        //String folder = billDAL.ElementAt(i).Folder;
 
                         //MessageBox.Show("String folder = billDAL.ElementAt(i).Folder " +billDAL.ElementAt(i).Folder);
 
@@ -152,55 +153,80 @@ namespace BLL
 
         }
 
-        public Boolean RetrieveBills_2(String folderID)
+        public Boolean Create(String folderID)
+        {
+            using (DBEntities context = new DBEntities())
+            {
+                var billDAL = context.Bill.FirstOrDefault(bill => bill.Number == Number);
+
+                if (billDAL == null)
+                {
+                    billDAL = new Bill();
+
+                    billDAL.Number = Number;
+                    billDAL.DateIssue = DateIssue;
+                    billDAL.ExpiringDate = ExpiringDate;
+                    billDAL.TotalPay = TotalPay;
+                    billDAL.Status = Status;
+                    billDAL.Image = Document;
+                    billDAL.Folder = Folder;
+
+                    context.Bill.AddObject(billDAL);
+
+                    context.SaveChanges();
+
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("This Bill already exists!");
+                }
+
+                return false;
+            }
+        }
+
+        public Boolean Update()
         {
             try
             {
                 using (DBEntities context = new DBEntities())
                 {
-                    //MessageBox.Show("FolderID, Bill BLL "+folderID);
-
-                    var billDAL = context.Bill.Select((bill =>
-                        new
-                            {   bill.Number,
-                                bill.DateIssue,
-                                bill.ExpiringDate,
-                                bill.TotalPay,
-                                bill.Status,
-                                bill.Image,
-                                bill.Folder }
-                        )).ToList();
+                    var billDAL = context.Bill.FirstOrDefault(bill => bill.Number == Number);
 
 
-                    foreach (var fee in billDAL)
+                    if (billDAL != null)
                     {
-                        if (fee.Folder == folderID)
-                        {
-                            var billBLL = new BillBLL();
+                        billDAL.Number = Number;
+                        billDAL.DateIssue = DateIssue;
+                        billDAL.ExpiringDate = ExpiringDate;
+                        billDAL.TotalPay = TotalPay;
+                        billDAL.Status = Status;
+                        billDAL.Image = Document;
+                        billDAL.Folder = Folder;
 
-                            billBLL.Number = fee.Number;
-                            billBLL.DateIssue = fee.DateIssue;
-                            billBLL.ExpiringDate = fee.ExpiringDate;
-                            billBLL.TotalPay = fee.TotalPay;
-                            billBLL.Status = fee.Status;
-                            billBLL.Document = fee.Image;
-                            billBLL.Folder = fee.Folder;
-
-                            Bills.Add(billBLL);
-                        }
+                        context.SaveChanges();
                     }
 
+                    return true;
                 }
-
             }
-
-            catch (Exception ex)
+            catch (DataException ex)
             {
 
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("DataException: " + ex.Message);
+            }
+            catch (InvalidOperationException ex)
+            {
+
+                MessageBox.Show("InvalidOperationException: " + ex.Message);
+            }
+            catch (NullReferenceException ex)
+            {
+                MessageBox.Show("NullReferenceException: " + ex.Message);
             }
 
-            return true;
+            return false;
         }
 
     }

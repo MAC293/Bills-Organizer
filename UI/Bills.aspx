@@ -86,16 +86,23 @@
             <asp:TemplateField HeaderText="Status">
                         
                 <EditItemTemplate>
-                    <asp:DropDownList ID="ddlStatusUpdate"  runat="server"></asp:DropDownList>
+                    <%--<asp:DropDownList ID="ddlStatusUpdate"  runat="server"></asp:DropDownList>--%>
+                    <asp:DropDownList ID="ddlStatusUpdate" runat="server">
+                        <asp:ListItem Text="Unpaid" Value="Inpaid"></asp:ListItem>
+                        <asp:ListItem Text="Paid" Value="Paid"></asp:ListItem>
+                    </asp:DropDownList>
                 </EditItemTemplate>
                 
                 <FooterTemplate>
-                    <asp:DropDownList ID="ddlStatusInsert" runat="server"></asp:DropDownList>
+                    <%--<asp:DropDownList ID="ddlStatusInsert" runat="server"></asp:DropDownList>--%>
+                    <asp:DropDownList ID="ddlStatusInsert" runat="server">
+                        <asp:ListItem Text="Unpaid" Value="Inpaid"></asp:ListItem>
+                        <asp:ListItem Text="Paid" Value="Paid"></asp:ListItem>
+                    </asp:DropDownList>
                 </FooterTemplate>
 
                 <ItemTemplate >
                     <asp:Label ID="lblStatus"  runat="server" Text='<%# Bind("Status") %>' ></asp:Label>
-
                 </ItemTemplate>
                 
             </asp:TemplateField>
