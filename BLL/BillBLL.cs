@@ -24,7 +24,7 @@ namespace BLL
 
         public BillBLL()
         {
-            Bills = new List<BillBLL>();
+            //Bills = new List<BillBLL>();
         }
 
         public int Number
@@ -107,7 +107,51 @@ namespace BLL
             return false;
         }
 
-        public void RetrieveBills(String folderID)
+        //public void RetrieveBills(String folderID)
+        //{
+        //    try
+        //    {
+        //        using (DBEntities context = new DBEntities())
+        //        {
+        //            //MessageBox.Show("FolderID, Bill BLL(1):" + folderID);
+
+        //            var billDAL = context.Bill.Select((bill =>
+        //                new { bill.Number, bill.DateIssue, bill.ExpiringDate, bill.TotalPay, bill.Status, bill.Image, bill.Folder })).ToList();
+
+
+        //            for (int i = 0; i < billDAL.Count(); i++)
+        //            {
+        //                if (billDAL.ElementAt(i).Folder.Trim().Equals(folderID.Trim()))
+        //                {
+        //                    //MessageBox.Show(billDAL.ElementAt(i).Folder);
+
+        //                    var billBLL = new BillBLL();
+
+        //                    billBLL.Number = billDAL.ElementAt(i).Number;
+        //                    billBLL.DateIssue = billDAL.ElementAt(i).DateIssue;
+        //                    billBLL.ExpiringDate = billDAL.ElementAt(i).ExpiringDate;
+        //                    billBLL.TotalPay = billDAL.ElementAt(i).TotalPay;
+        //                    //billBLL.Status = billDAL.ElementAt(i).Status;
+        //                    billBLL.Document = billDAL.ElementAt(i).Image;
+        //                    billBLL.Folder = billDAL.ElementAt(i).Folder;
+
+        //                    Bills.Add(billBLL);
+
+        //                }
+        //            }
+        //        }
+
+        //    }
+
+        //    catch (Exception ex)
+        //    {
+
+        //        MessageBox.Show(ex.Message);
+        //    }
+
+        //}
+
+        public void RetrieveBills(String folderID, List<BillBLL> bills)
         {
             try
             {
@@ -135,10 +179,15 @@ namespace BLL
                             billBLL.Document = billDAL.ElementAt(i).Image;
                             billBLL.Folder = billDAL.ElementAt(i).Folder;
 
-                            Bills.Add(billBLL);
+                            //MessageBox.Show("RetrieveBills, BLL " + billBLL.Number.ToString());
+
+                            bills.Add(billBLL);
 
                         }
+                        
                     }
+
+                    
                 }
 
             }
@@ -150,6 +199,7 @@ namespace BLL
             }
 
         }
+
 
         public Boolean Create(String folderID)
         {
@@ -182,6 +232,42 @@ namespace BLL
 
                 return false;
             }
+        }
+
+        public int BillsQuatity(String folderID)
+        {
+            int quantity = 0;
+
+            try
+            {
+                using (DBEntities context = new DBEntities())
+                {
+                    var billDAL = context.Bill.Select((bill =>
+                        new { bill.Folder })).ToList();
+
+
+                    for (int i = 0; i < billDAL.Count(); i++)
+                    {
+
+                        if (billDAL.ElementAt(i).Folder.Trim().Equals(folderID.Trim()))
+                        {
+                            quantity++;
+                        }
+                    }
+
+                    MessageBox.Show("BillsQuatity, BLL: " + quantity);
+                    return quantity;
+                    
+                }
+            }
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Exception (A, BLL): " + ex);
+            }
+
+            return 0;
         }
 
         public Boolean Update()

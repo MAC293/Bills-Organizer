@@ -21,7 +21,7 @@ namespace UI
         public List<BillBLL> Fees
         {
             get { return _Fees; }
-            set { _Fees = value; }
+            set { _Fees = value; }  
         }
 
 
@@ -53,20 +53,33 @@ namespace UI
                 FolderID = (String)Session["FolderID"];
                 //MessageBox.Show(FolderID);
 
+                //Bill = new BillBLL();
+                //ViewState["Bill"] = Bill;
+
+                Fees = new List<BillBLL>();
+                //ViewState["Fees"] = Fees;
+
                 Bill = new BillBLL();
-                ViewState["Bills"] = Bill.Bills;
                 //ViewState["Bill"] = Bill;
 
                 if (Bill.BillsExistence(FolderID))
                 {
                     //MessageBox.Show("Bill.BillsExistence is TRUE"); 
-                    Bill.RetrieveBills(FolderID);
+                    //for (int i = 0; i < Bill.BillsQuatity(FolderID); i++)
+                    //{
+                    //    ViewState["BillsQty"] = i++;
+                    //    Fees.Add(Bill.RetrieveBills(FolderID));
+                    //    i = (int)ViewState["BillsQty"];
+                    //    MessageBox.Show("i, UI " + i);
 
-                    
+                    //}
 
-                    if (Bill.Bills != null)
+                    Bill.RetrieveBills(FolderID, Fees);
+
+
+                    if (Fees != null)
                     {
-                        if (Bill.Bills.Count > 0)
+                        if (Fees.Count > 0)
                         {
                             FillGridView();
                         }
@@ -80,7 +93,7 @@ namespace UI
             }
             else
             {
-                Bill.Bills = (List<BillBLL>)ViewState["Bills"];
+                
             }
 
         }
@@ -191,7 +204,7 @@ namespace UI
         protected void FillGridView()
         {
             //grvFees.DataSource = Bill.Bills;
-            grvFees.DataSource = Bill.Bills;
+            grvFees.DataSource = Fees;
             grvFees.DataBind();
         }
 
