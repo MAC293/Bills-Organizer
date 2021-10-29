@@ -13,15 +13,16 @@ namespace UI
 {
     public partial class Bills : System.Web.UI.Page
     {
-        //private List<BillBLL> _Fees;
+        private List<BillBLL> _Fees;
         private BillBLL _Bill;
-        private Boolean _IsChanged;
+        //private Boolean _IsChanged;
+        private String _FolderID;
 
-        //public List<BillBLL> Fees
-        //{
-        //    get { return _Fees; }
-        //    set { _Fees = value; }
-        //}
+        public List<BillBLL> Fees
+        {
+            get { return _Fees; }
+            set { _Fees = value; }
+        }
 
 
         public BillBLL Bill
@@ -30,27 +31,38 @@ namespace UI
             set { _Bill = value; }
         }
 
-        public Boolean IsChanged
+        public String FolderID
         {
-            get { return _IsChanged; }
-            set { _IsChanged = value; }
+            get { return _FolderID; }
+            set { _FolderID = value; }
         }
+
+
+        //public Boolean IsChanged
+        //{
+        //    get { return _IsChanged; }
+        //    set { _IsChanged = value; }
+        //}
         protected void Page_Load(object sender, EventArgs e)
         {
             lblFolderName.Text = (String)Session["FolderName"];
 
             if (!IsPostBack)
             {
-                String folderID = (String)Session["FolderID"];
-                //MessageBox.Show(folderID);
+                //String folderID = (String)Session["FolderID"];
+                FolderID = (String)Session["FolderID"];
+                //MessageBox.Show(FolderID);
 
                 Bill = new BillBLL();
-                //Bill.Bills = new List<BillBLL>();
+                ViewState["Bills"] = Bill.Bills;
+                //ViewState["Bill"] = Bill;
 
-                if (Bill.BillsExistence(folderID))
+                if (Bill.BillsExistence(FolderID))
                 {
                     //MessageBox.Show("Bill.BillsExistence is TRUE"); 
-                    Bill.RetrieveBills(folderID);
+                    Bill.RetrieveBills(FolderID);
+
+                    
 
                     if (Bill.Bills != null)
                     {
@@ -59,14 +71,16 @@ namespace UI
                             FillGridView();
                         }
                     }
-
-
                 }
                 else
                 {
                     DisplayEmptyGridView();
                 }
 
+            }
+            else
+            {
+                Bill.Bills = (List<BillBLL>)ViewState["Bills"];
             }
 
         }
@@ -79,27 +93,32 @@ namespace UI
                 {
                     if (Page.IsValid)
                     {
-                        BillBLL newBill = new BillBLL();
+                        Bill = new BillBLL();
+
+                        //if (Bill.Bills != null)
+                        //{
+                        //    MessageBox.Show("Bill.Bills != null");
+                        //}
 
                         //Number
                         String strNumber = ((TextBox)grvFees.FooterRow.FindControl("txtNumberInsert")).Text;
                         int intNumber = int.Parse(strNumber);
-                        newBill.Number = intNumber;
+                        Bill.Number = intNumber;
 
                         //DateIssue
                         String strDateIssue = ((TextBox)grvFees.FooterRow.FindControl("txtDateIssueInsert")).Text;
                         DateTime datDateIssue = DateTime.Parse(strDateIssue);
-                        newBill.DateIssue = datDateIssue;
+                        Bill.DateIssue = datDateIssue;
 
                         //ExpiringDate
                         String strExpiringDate = ((TextBox)grvFees.FooterRow.FindControl("txtExpiringDateInsert")).Text;
                         DateTime datExpiringDate = DateTime.Parse(strExpiringDate);
-                        newBill.ExpiringDate = datExpiringDate;
+                        Bill.ExpiringDate = datExpiringDate;
 
                         //TotalPay
                         String strTotalPay = ((TextBox)grvFees.FooterRow.FindControl("txtTotalPayInsert")).Text;
                         int intTotalPay = int.Parse(strTotalPay);
-                        newBill.TotalPay = intTotalPay;
+                        Bill.TotalPay = intTotalPay;
 
                         //Status
                         var ddlStatus = ((DropDownList)grvFees.FooterRow.FindControl("ddlStatusInsert"));
@@ -107,26 +126,49 @@ namespace UI
 
                         if (status == "Paid")
                         {
-                            status = "True";
+                            //status = "True";
 
-                            Boolean paid = Boolean.Parse(status);
-                            newBill.Status = paid;
+                            //Boolean paid = Boolean.Parse(status);
+                            //Bill.Status = paid;
 
-                            ViewState["ddlStatusInsert"] = ddlStatus.SelectedValue;
-                            IsChanged = false;
-                            ViewState["IsChanged"] = IsChanged;
+                            //ViewState["ddlStatusInsert"] = ddlStatus.SelectedValue;
+                            //IsChanged = false;
+                            //ViewState["IsChanged"] = IsChanged;
+
+                            Bill.Status = "Paid";
 
                         }
                         else if (status == "Unpaid")
                         {
-                            status = "False";
+                            //status = "False";
 
-                            Boolean unpaid = Boolean.Parse(status);
-                            newBill.Status = unpaid;
+                            //Boolean unpaid = Boolean.Parse(status);
+                            //Bill.Status = unpaid;
 
-                            ViewState["ddlStatusInsert"] = ddlStatus.SelectedValue;
-                            IsChanged = false;
-                            ViewState["IsChanged"] = IsChanged;
+                            //ViewState["ddlStatusInsert"] = ddlStatus.SelectedValue;
+                            //IsChanged = false;
+                            //ViewState["IsChanged"] = IsChanged;
+
+                            Bill.Status = "Unpaid";
+                        }
+
+                        Bill.Document = new Byte[0];
+
+                        FolderID = (String)Session["FolderID"];
+
+
+
+                        if (Bill.Bills != null)
+                        {
+                            Bill.Bills.Add(Bill);
+                        }
+
+                        ViewState["Bills"] = Bill.Bills;
+
+
+                        if (Bill.Bills.Count > 0)
+                        {
+                            FillGridView();
                         }
                     }
                 }
@@ -148,6 +190,7 @@ namespace UI
 
         protected void FillGridView()
         {
+            //grvFees.DataSource = Bill.Bills;
             grvFees.DataSource = Bill.Bills;
             grvFees.DataBind();
         }

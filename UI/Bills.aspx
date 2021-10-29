@@ -102,7 +102,7 @@
                 </FooterTemplate>
 
                 <ItemTemplate >
-                    <asp:Label ID="lblStatus"  runat="server" Text='<%# Bind("Status") %>' ></asp:Label>
+                    <asp:Label ID="lblStatus" runat="server" Text='<%# Bind("Status") %>' ></asp:Label>
                 </ItemTemplate>
                 
             </asp:TemplateField>

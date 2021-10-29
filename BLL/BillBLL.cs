@@ -16,7 +16,8 @@ namespace BLL
         private DateTime _DateIssue;
         private DateTime _ExpiringDate;
         private int _TotalPay;
-        private Boolean _Status;
+        //private Boolean _Status;
+        private String _Status;
         private Byte[] _Document;
         private String _Folder;
         private List<BillBLL> _Bills;
@@ -50,7 +51,13 @@ namespace BLL
             set { _TotalPay = value; }
         }
 
-        public Boolean Status
+        //public Boolean Status
+        //{
+        //    get { return _Status; }
+        //    set { _Status = value; }
+        //}
+
+        public String Status
         {
             get { return _Status; }
             set { _Status = value; }
@@ -114,15 +121,6 @@ namespace BLL
 
                     for (int i = 0; i < billDAL.Count(); i++)
                     {
-                        //MessageBox.Show("Folder: "+billDAL.ElementAt(i).Folder+" Position: "+i);
-                        //MessageBox.Show("FolderID, Bill BLL(2): " + folderID);
-
-                        //String folder = billDAL.ElementAt(i).Folder;
-
-                        //MessageBox.Show("String folder = billDAL.ElementAt(i).Folder " +billDAL.ElementAt(i).Folder);
-
-                        //if (folder.Trim().Equals(folderID.Trim()))
-                        //{
                         if (billDAL.ElementAt(i).Folder.Trim().Equals(folderID.Trim()))
                         {
                             //MessageBox.Show(billDAL.ElementAt(i).Folder);
@@ -133,7 +131,7 @@ namespace BLL
                             billBLL.DateIssue = billDAL.ElementAt(i).DateIssue;
                             billBLL.ExpiringDate = billDAL.ElementAt(i).ExpiringDate;
                             billBLL.TotalPay = billDAL.ElementAt(i).TotalPay;
-                            billBLL.Status = billDAL.ElementAt(i).Status;
+                            //billBLL.Status = billDAL.ElementAt(i).Status;
                             billBLL.Document = billDAL.ElementAt(i).Image;
                             billBLL.Folder = billDAL.ElementAt(i).Folder;
 
@@ -167,7 +165,7 @@ namespace BLL
                     billDAL.DateIssue = DateIssue;
                     billDAL.ExpiringDate = ExpiringDate;
                     billDAL.TotalPay = TotalPay;
-                    billDAL.Status = Status;
+                    //billDAL.Status = Status;
                     billDAL.Image = Document;
                     billDAL.Folder = Folder;
 
@@ -201,7 +199,7 @@ namespace BLL
                         billDAL.DateIssue = DateIssue;
                         billDAL.ExpiringDate = ExpiringDate;
                         billDAL.TotalPay = TotalPay;
-                        billDAL.Status = Status;
+                        //billDAL.Status = Status;
                         billDAL.Image = Document;
                         billDAL.Folder = Folder;
 
