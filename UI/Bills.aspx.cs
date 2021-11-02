@@ -95,10 +95,12 @@ namespace UI
             {
                 Fees = (List<BillBLL>) ViewState["Fees"];
 
-                if (Fees == null)
-                {
-                    Fees = new List<BillBLL>();
-                }
+                FolderID = (String)Session["FolderID"];
+
+                //if (Fees == null)
+                //{
+                //    Fees = new List<BillBLL>();
+                //}
             }
 
         }
@@ -155,6 +157,7 @@ namespace UI
                             //ViewState["IsChanged"] = IsChanged;
 
                             newBill.Status = "Paid";
+                            
 
                         }
                         else if (status == "Unpaid")
@@ -173,17 +176,18 @@ namespace UI
 
                         newBill.Document = new Byte[0];
 
+                        newBill.Folder = FolderID;
+
                         
 
                         if (Fees != null)
                         {
                             Fees.Add(newBill);
+                            newBill.Create(FolderID);
                         }
 
-                        if (Fees.Count > 0)
-                        {
-                            FillGridView();
-                        }
+                        FillGridView();
+                        
                     }
                 }
                 catch (NullReferenceException ex)

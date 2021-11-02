@@ -215,7 +215,7 @@ namespace BLL
                     billDAL.DateIssue = DateIssue;
                     billDAL.ExpiringDate = ExpiringDate;
                     billDAL.TotalPay = TotalPay;
-                    //billDAL.Status = Status;
+                    billDAL.Status = StringToBool();
                     billDAL.Image = Document;
                     billDAL.Folder = Folder;
 
@@ -232,6 +232,30 @@ namespace BLL
 
                 return false;
             }
+        }
+
+        //public Boolean StringToBool(String inputStatus)
+        //{
+        //    Boolean outputStatus = false;
+
+        //    if (inputStatus.Equals("Paid"))
+        //    {
+        //        outputStatus = true;
+        //    }
+
+        //    return outputStatus;
+        //}
+
+        public Boolean StringToBool()
+        {
+            Boolean outputStatus = false;
+
+            if (Status.Equals("Paid"))
+            {
+                outputStatus = true;
+            }
+
+            return outputStatus;
         }
 
         public int BillsQuatity(String folderID)
