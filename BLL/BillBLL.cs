@@ -20,7 +20,7 @@ namespace BLL
         private String _Status;
         private Byte[] _Document;
         private String _Folder;
-        private List<BillBLL> _Bills;
+        //private List<BillBLL> _Bills;
 
         public BillBLL()
         {
@@ -75,11 +75,11 @@ namespace BLL
             set { _Folder = value; }
         }
 
-        public List<BillBLL> Bills
-        {
-            get { return _Bills; }
-            set { _Bills = value; }
-        }
+        //public List<BillBLL> Bills
+        //{
+        //    get { return _Bills; }
+        //    set { _Bills = value; }
+        //}
         public Boolean BillsExistence(String folderID)
         {
             try

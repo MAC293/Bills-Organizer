@@ -169,17 +169,12 @@ namespace UI
 
                         FolderID = (String)Session["FolderID"];
 
-
-
-                        if (Bill.Bills != null)
+                        if (Fees != null)
                         {
-                            Bill.Bills.Add(Bill);
+                            Fees.Add(Bill);
                         }
 
-                        ViewState["Bills"] = Bill.Bills;
-
-
-                        if (Bill.Bills.Count > 0)
+                        if (Fees.Count > 0)
                         {
                             FillGridView();
                         }

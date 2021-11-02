@@ -11,6 +11,14 @@ DELETE Owner;
 
 DELETE FROM Bill;
 
+SELECT * FROM Owner;
+SELECT * FROM Folder;
+SELECT * FROM Bill;
+
+SELECT Folder
+FROM Bill
+ORDER BY Folder ASC;
+
 INSERT INTO Bill (Number, DateIssue, ExpiringDate, TotalPay, Status, Image, Folder)
 VALUES (123, '10-10-2021', '08-10-2021', 10000, 1, 0xCE, 'CBE1');
 INSERT INTO Bill (Number, DateIssue, ExpiringDate, TotalPay, Status, Image, Folder)
@@ -29,11 +37,3 @@ INSERT INTO Bill (Number, DateIssue, ExpiringDate, TotalPay, Status, Image, Fold
 VALUES (171, '10-10-2021', '08-10-2021', 2000, 1, 0xCE, 'CBE3');
 INSERT INTO Bill (Number, DateIssue, ExpiringDate, TotalPay, Status, Image, Folder)
 VALUES (191, '10-10-2021', '08-10-2021', 30000, 1, 0xCE, 'CBE3');
-
-SELECT * FROM Owner;
-SELECT * FROM Folder;
-SELECT * FROM Bill;
-
-SELECT Folder
-FROM Bill
-ORDER BY Folder ASC;
