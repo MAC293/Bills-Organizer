@@ -57,7 +57,7 @@ namespace UI
                 //ViewState["Bill"] = Bill;
 
                 Fees = new List<BillBLL>();
-                //ViewState["Fees"] = Fees;
+                ViewState["Fees"] = Fees;
 
                 Bill = new BillBLL();
                 //ViewState["Bill"] = Bill;
@@ -93,7 +93,12 @@ namespace UI
             }
             else
             {
-                
+                Fees = (List<BillBLL>) ViewState["Fees"];
+
+                if (Fees == null)
+                {
+                    Fees = new List<BillBLL>();
+                }
             }
 
         }
@@ -106,7 +111,8 @@ namespace UI
                 {
                     if (Page.IsValid)
                     {
-                        Bill = new BillBLL();
+                        //Bill = new BillBLL();
+                        BillBLL newBill = new BillBLL();
 
                         //if (Bill.Bills != null)
                         //{
@@ -116,22 +122,22 @@ namespace UI
                         //Number
                         String strNumber = ((TextBox)grvFees.FooterRow.FindControl("txtNumberInsert")).Text;
                         int intNumber = int.Parse(strNumber);
-                        Bill.Number = intNumber;
+                        newBill.Number = intNumber;
 
                         //DateIssue
                         String strDateIssue = ((TextBox)grvFees.FooterRow.FindControl("txtDateIssueInsert")).Text;
                         DateTime datDateIssue = DateTime.Parse(strDateIssue);
-                        Bill.DateIssue = datDateIssue;
+                        newBill.DateIssue = datDateIssue;
 
                         //ExpiringDate
                         String strExpiringDate = ((TextBox)grvFees.FooterRow.FindControl("txtExpiringDateInsert")).Text;
                         DateTime datExpiringDate = DateTime.Parse(strExpiringDate);
-                        Bill.ExpiringDate = datExpiringDate;
+                        newBill.ExpiringDate = datExpiringDate;
 
                         //TotalPay
                         String strTotalPay = ((TextBox)grvFees.FooterRow.FindControl("txtTotalPayInsert")).Text;
                         int intTotalPay = int.Parse(strTotalPay);
-                        Bill.TotalPay = intTotalPay;
+                        newBill.TotalPay = intTotalPay;
 
                         //Status
                         var ddlStatus = ((DropDownList)grvFees.FooterRow.FindControl("ddlStatusInsert"));
@@ -148,7 +154,7 @@ namespace UI
                             //IsChanged = false;
                             //ViewState["IsChanged"] = IsChanged;
 
-                            Bill.Status = "Paid";
+                            newBill.Status = "Paid";
 
                         }
                         else if (status == "Unpaid")
@@ -162,16 +168,16 @@ namespace UI
                             //IsChanged = false;
                             //ViewState["IsChanged"] = IsChanged;
 
-                            Bill.Status = "Unpaid";
+                            newBill.Status = "Unpaid";
                         }
 
-                        Bill.Document = new Byte[0];
+                        newBill.Document = new Byte[0];
 
-                        FolderID = (String)Session["FolderID"];
+                        
 
                         if (Fees != null)
                         {
-                            Fees.Add(Bill);
+                            Fees.Add(newBill);
                         }
 
                         if (Fees.Count > 0)
