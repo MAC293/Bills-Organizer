@@ -180,8 +180,10 @@ namespace UI
 
                         if (Fees != null)
                         {
-                            Fees.Add(newBill);
-                            newBill.Create(FolderID);
+                            if (newBill.Create(FolderID))
+                            {
+                                Fees.Add(newBill);
+                            }
                         }
 
                         FillGridView();

@@ -175,7 +175,7 @@ namespace BLL
                             billBLL.DateIssue = billDAL.ElementAt(i).DateIssue;
                             billBLL.ExpiringDate = billDAL.ElementAt(i).ExpiringDate;
                             billBLL.TotalPay = billDAL.ElementAt(i).TotalPay;
-                            //billBLL.Status = billDAL.ElementAt(i).Status;
+                            billBLL.Status = BoolToString(billDAL.ElementAt(i).Status);
                             billBLL.Document = billDAL.ElementAt(i).Image;
                             billBLL.Folder = billDAL.ElementAt(i).Folder;
 
@@ -239,6 +239,17 @@ namespace BLL
             bool outputStatus = Status.Equals("Paid");
 
             return outputStatus;
+        }
+        public String BoolToString(Boolean inStatus)
+        {
+            String outStatus = "Unpaid";
+
+            if (inStatus == true)
+            {
+                outStatus = "Paid";
+            }
+
+            return outStatus;
         }
 
         //public Boolean StringToBool()
