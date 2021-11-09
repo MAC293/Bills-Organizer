@@ -178,8 +178,6 @@ namespace UI
 
                         newBill.Folder = FolderID;
 
-                        
-
                         if (Fees != null)
                         {
                             Fees.Add(newBill);

@@ -234,29 +234,24 @@ namespace BLL
             }
         }
 
-        //public Boolean StringToBool(String inputStatus)
+        public Boolean StringToBool()
+        {
+            bool outputStatus = Status.Equals("Paid");
+
+            return outputStatus;
+        }
+
+        //public Boolean StringToBool()
         //{
         //    Boolean outputStatus = false;
 
-        //    if (inputStatus.Equals("Paid"))
+        //    if (Status.Equals("Paid"))
         //    {
         //        outputStatus = true;
         //    }
 
         //    return outputStatus;
         //}
-
-        public Boolean StringToBool()
-        {
-            Boolean outputStatus = false;
-
-            if (Status.Equals("Paid"))
-            {
-                outputStatus = true;
-            }
-
-            return outputStatus;
-        }
 
         public int BillsQuatity(String folderID)
         {
