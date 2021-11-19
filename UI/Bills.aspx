@@ -3,7 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    
+    <asp:HyperLink  NavigateUrl="Folder.aspx" runat="server">Folders</asp:HyperLink>
     <asp:Label ID="lblFolderName" runat="server"></asp:Label>
 
     <asp:GridView ID="grvFees" runat="server" AutoGenerateColumns="False" ShowFooter="True" OnRowCommand="grvFees_RowCommand">

@@ -24,7 +24,7 @@ WHERE Name = 'John Doe';
 SELECT * FROM Folder
 WHERE Name = 'Cable';
 SELECT * FROM Bill
-WHERE Folder = 'CB1';
+WHERE Folder = 'CBE1';
 
 INSERT INTO Bill (Number, DateIssue, ExpiringDate, TotalPay, Status, Image, Folder)
 VALUES (123, '10-10-2021', '08-10-2021', 10000, 1, 0xCE, 'CBE1');

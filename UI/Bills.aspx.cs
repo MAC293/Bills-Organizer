@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -126,15 +127,27 @@ namespace UI
                         int intNumber = int.Parse(strNumber);
                         newBill.Number = intNumber;
 
-                        //DateIssue
+                        //DateIssue (-)
+                        //DateTime
+                        //String strDateIssue = ((TextBox)grvFees.FooterRow.FindControl("txtDateIssueInsert")).Text;
+                        //var datDateIssue = DateTime.ParseExact(strDateIssue, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                        //newBill.DateIssue = new DateTime(datDateIssue.Day + datDateIssue.Month + datDateIssue.Year).Date;
+                        //String
                         String strDateIssue = ((TextBox)grvFees.FooterRow.FindControl("txtDateIssueInsert")).Text;
-                        DateTime datDateIssue = DateTime.Parse(strDateIssue);
-                        newBill.DateIssue = datDateIssue;
+                        newBill.DateIssue = strDateIssue;
+                        //MessageBox.Show("DateIssue, UI: " + strDateIssue);
 
-                        //ExpiringDate
+
+                        //ExpiringDate (-)
+                        //DateTime
+                        //String strExpiringDate = ((TextBox)grvFees.FooterRow.FindControl("txtExpiringDateInsert")).Text;
+                        //var datExpiringDate = DateTime.ParseExact(strExpiringDate, "dd/MM/yyyy", CultureInfo.InstalledUICulture);
+                        //newBill.ExpiringDate = datExpiringDate.Date;
+                        //String
                         String strExpiringDate = ((TextBox)grvFees.FooterRow.FindControl("txtExpiringDateInsert")).Text;
-                        DateTime datExpiringDate = DateTime.Parse(strExpiringDate);
-                        newBill.ExpiringDate = datExpiringDate;
+                        newBill.ExpiringDate = strExpiringDate;
+                        //MessageBox.Show("ExpiringDate, UI: " + strExpiringDate);
+
 
                         //TotalPay
                         String strTotalPay = ((TextBox)grvFees.FooterRow.FindControl("txtTotalPayInsert")).Text;
@@ -183,10 +196,16 @@ namespace UI
                             if (newBill.Create(FolderID))
                             {
                                 Fees.Add(newBill);
+
+                                FillGridView();
+                            }
+                            else
+                            {
+                                DisplayEmptyGridView();
                             }
                         }
 
-                        FillGridView();
+                        
                         
                     }
                 }

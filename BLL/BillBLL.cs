@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +14,10 @@ namespace BLL
     public class BillBLL
     {
         private int _Number;
-        private DateTime _DateIssue;
-        private DateTime _ExpiringDate;
+        //private DateTime _DateIssue;
+        //private DateTime _ExpiringDate;
+        private String _DateIssue;
+        private String _ExpiringDate;
         private int _TotalPay;
         //private Boolean _Status;
         private String _Status;
@@ -33,13 +36,25 @@ namespace BLL
             set { _Number = value; }
         }
 
-        public DateTime DateIssue
+        //public DateTime DateIssue
+        //{
+        //    get { return _DateIssue; }
+        //    set { _DateIssue = value; }
+        //}
+
+        //public DateTime ExpiringDate
+        //{
+        //    get { return _ExpiringDate; }
+        //    set { _ExpiringDate = value; }
+        //}
+
+        public String DateIssue
         {
             get { return _DateIssue; }
             set { _DateIssue = value; }
         }
 
-        public DateTime ExpiringDate
+        public String ExpiringDate
         {
             get { return _ExpiringDate; }
             set { _ExpiringDate = value; }
@@ -172,8 +187,8 @@ namespace BLL
                             var billBLL = new BillBLL();
 
                             billBLL.Number = billDAL.ElementAt(i).Number;
-                            billBLL.DateIssue = billDAL.ElementAt(i).DateIssue;
-                            billBLL.ExpiringDate = billDAL.ElementAt(i).ExpiringDate;
+                            billBLL.DateIssue = DateToStr(billDAL.ElementAt(i).DateIssue);
+                            billBLL.ExpiringDate = DateToStr(billDAL.ElementAt(i).ExpiringDate);
                             billBLL.TotalPay = billDAL.ElementAt(i).TotalPay;
                             billBLL.Status = BoolToString(billDAL.ElementAt(i).Status);
                             billBLL.Document = billDAL.ElementAt(i).Image;
@@ -212,8 +227,8 @@ namespace BLL
                     billDAL = new Bill();
 
                     billDAL.Number = Number;
-                    billDAL.DateIssue = DateIssue;
-                    billDAL.ExpiringDate = ExpiringDate;
+                    billDAL.DateIssue = StrToDate(DateIssue); ;
+                    billDAL.ExpiringDate = StrToDate(ExpiringDate); 
                     billDAL.TotalPay = TotalPay;
                     billDAL.Status = StringToBool();
                     billDAL.Image = Document;
@@ -312,8 +327,8 @@ namespace BLL
                     if (billDAL != null)
                     {
                         billDAL.Number = Number;
-                        billDAL.DateIssue = DateIssue;
-                        billDAL.ExpiringDate = ExpiringDate;
+                        billDAL.DateIssue = StrToDate(DateIssue);
+                        billDAL.ExpiringDate = StrToDate(ExpiringDate);
                         billDAL.TotalPay = TotalPay;
                         //billDAL.Status = Status;
                         billDAL.Image = Document;
@@ -342,6 +357,19 @@ namespace BLL
 
             return false;
         }
+
+        public DateTime StrToDate(String date)
+        {
+            var datDateIssue = DateTime.ParseExact(date, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+            return datDateIssue;
+        }
+
+        public String DateToStr(DateTime date)
+        {
+            return date.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+        }
+
 
     }
 }
