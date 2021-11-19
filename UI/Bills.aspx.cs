@@ -218,6 +218,21 @@ namespace UI
                     MessageBox.Show("FormatException: " + ex.Message);
                 }
             }
+            else if(e.CommandName == "btnUpdate")
+            {
+                try
+                {
+                    MessageBox.Show("Update");
+                }
+                catch (NullReferenceException ex)
+                {
+                    MessageBox.Show("NullReferenceException: " + ex.Message);
+                }
+                catch (FormatException ex)
+                {
+                    MessageBox.Show("FormatException: " + ex.Message);
+                }
+            }
         }
 
         //protected Boolean Status(String combobox)
