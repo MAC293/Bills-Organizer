@@ -22,7 +22,7 @@ namespace UI
         public List<BillBLL> Fees
         {
             get { return _Fees; }
-            set { _Fees = value; }  
+            set { _Fees = value; }
         }
 
 
@@ -94,7 +94,7 @@ namespace UI
             }
             else
             {
-                Fees = (List<BillBLL>) ViewState["Fees"];
+                Fees = (List<BillBLL>)ViewState["Fees"];
 
                 FolderID = (String)Session["FolderID"];
 
@@ -170,7 +170,7 @@ namespace UI
                             //ViewState["IsChanged"] = IsChanged;
 
                             newBill.Status = "Paid";
-                            
+
 
                         }
                         else if (status == "Unpaid")
@@ -205,8 +205,8 @@ namespace UI
                             }
                         }
 
-                        
-                        
+
+
                     }
                 }
                 catch (NullReferenceException ex)
@@ -218,11 +218,49 @@ namespace UI
                     MessageBox.Show("FormatException: " + ex.Message);
                 }
             }
-            else if(e.CommandName == "btnUpdate")
+            else if (e.CommandName == "btnUpdate")
             {
                 try
                 {
-                    MessageBox.Show("Update");
+                    //MessageBox.Show("Update");
+
+                    BillBLL updateBill = new BillBLL();
+
+                    String strNumber = ((TextBox)grvFees.Rows[grvFees.EditIndex].FindControl("txtNumberUpdate")).Text;
+                    int intNumber = int.Parse(strNumber);
+                    updateBill.Number = intNumber;
+
+                    var rowIndex = Convert.ToInt32(e.CommandArgument);
+
+                    String strDateIssue = ((TextBox)grvFees.Rows[grvFees.EditIndex].FindControl("txtDateIssueUpdate")).Text;
+                    updateBill.DateIssue = strDateIssue;
+                    Fees[rowIndex].DateIssue = strDateIssue;
+
+                    String strExpiringDate = ((TextBox)grvFees.Rows[grvFees.EditIndex].FindControl("txtExpiringDateUpdate")).Text;
+                    updateBill.ExpiringDate = strExpiringDate;
+                    Fees[rowIndex].ExpiringDate = strExpiringDate;
+
+
+                    String strTotalPay = ((TextBox)grvFees.Rows[grvFees.EditIndex].FindControl("txtTotalPayUpdate")).Text;
+                    int intTotalPay = int.Parse(strTotalPay);
+                    updateBill.TotalPay = intTotalPay;
+                    Fees[rowIndex].TotalPay = intTotalPay;
+
+                    var ddlStatus = (DropDownList)grvFees.Rows[grvFees.EditIndex].FindControl("ddlStatusUpdate");
+                    updateBill.Status = ddlStatus.SelectedValue;
+                    Fees[rowIndex].Status = ddlStatus.SelectedValue;
+
+                    updateBill.Document = new Byte[0];
+
+                    updateBill.Folder = FolderID;
+
+                    updateBill.Update();
+
+                    grvFees.EditIndex = -1;
+
+                    FillGridView();
+
+
                 }
                 catch (NullReferenceException ex)
                 {
@@ -232,6 +270,23 @@ namespace UI
                 {
                     MessageBox.Show("FormatException: " + ex.Message);
                 }
+            }
+            else if (e.CommandName == "btnDelete")
+            {
+
+            }
+            else if (e.CommandName == "btnEdit")
+            {
+                int rowIndex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                grvFees.EditIndex = rowIndex;
+
+                FillGridView();
+            }
+            else if (e.CommandName == "btnCancel")
+            {
+                grvFees.EditIndex = -1;
+
+                FillGridView();
             }
         }
 

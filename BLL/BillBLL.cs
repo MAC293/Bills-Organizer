@@ -326,18 +326,19 @@ namespace BLL
 
                     if (billDAL != null)
                     {
-                        billDAL.Number = Number;
-                        billDAL.DateIssue = StrToDate(DateIssue);
+                        billDAL.DateIssue = StrToDate(DateIssue); ;
                         billDAL.ExpiringDate = StrToDate(ExpiringDate);
                         billDAL.TotalPay = TotalPay;
-                        //billDAL.Status = Status;
+                        billDAL.Status = StringToBool();
                         billDAL.Image = Document;
                         billDAL.Folder = Folder;
 
                         context.SaveChanges();
+
+                        return true;
                     }
 
-                    return true;
+                    return false;
                 }
             }
             catch (DataException ex)
