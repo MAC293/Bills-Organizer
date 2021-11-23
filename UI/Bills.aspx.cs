@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using BLL;
+using Label = System.Web.UI.WebControls.Label;
 using TextBox = System.Web.UI.WebControls.TextBox;
 using View = System.Web.UI.WebControls.View;
 
@@ -273,6 +274,27 @@ namespace UI
             }
             else if (e.CommandName == "btnDelete")
             {
+                BillBLL deleteBill = new BillBLL();
+
+                var index = Convert.ToInt32(e.CommandArgument);
+
+                String strNumber = ((Label)grvFees.Rows[index].FindControl("lblNumberDelete")).Text;
+                int intNumber = int.Parse(strNumber);
+
+                deleteBill.Number = intNumber;
+
+                Fees.RemoveAt(index);
+
+                deleteBill.Delete();
+
+                FillGridView();
+
+                if (Fees.Count == 0)
+                {
+                    DisplayEmptyGridView();
+                }
+
+
 
             }
             else if (e.CommandName == "btnEdit")
@@ -287,6 +309,10 @@ namespace UI
                 grvFees.EditIndex = -1;
 
                 FillGridView();
+            }
+            else if (e.CommandName == "btnView")
+            {
+                //MessageBox.Show("View");
             }
         }
 

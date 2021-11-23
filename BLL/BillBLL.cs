@@ -359,6 +359,30 @@ namespace BLL
             return false;
         }
 
+        public Boolean Delete()
+        {
+            try
+            {
+                using (DBEntities context = new DBEntities())
+                {
+                    var billDAL = context.Bill.FirstOrDefault(bill => bill.Number == Number);
+
+                    context.DeleteObject(billDAL);
+
+                    context.SaveChanges();
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Exception: " + ex.Message);
+
+                return false;
+            }
+        }
+
         public DateTime StrToDate(String date)
         {
             var datDateIssue = DateTime.ParseExact(date, "dd/MM/yyyy", CultureInfo.InvariantCulture);
