@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net.Configuration;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -294,8 +295,6 @@ namespace UI
                     DisplayEmptyGridView();
                 }
 
-
-
             }
             else if (e.CommandName == "btnEdit")
             {
@@ -303,23 +302,41 @@ namespace UI
                 grvFees.EditIndex = rowIndex;
 
                 FillGridView();
+
+                //UnchangedStatus(e);
             }
             else if (e.CommandName == "btnCancel")
             {
                 grvFees.EditIndex = -1;
 
                 FillGridView();
+
+
             }
             else if (e.CommandName == "btnView")
             {
-                //MessageBox.Show("View");
+
+                UnchangedStatus(e);
+                //MessageBox.Show(index.ToString());
             }
         }
 
-        //protected Boolean Status(String combobox)
-        //{
+        protected void UnchangedStatus(GridViewCommandEventArgs e)
+        {
+            var index = Convert.ToInt32(e.CommandArgument);
 
-        //}
+            String strStatus = ((Label)grvFees.Rows[index].FindControl("lblStatus")).Text;
+
+            var ddlStatus = (DropDownList)grvFees.Rows[grvFees.EditIndex].FindControl("ddlStatusUpdate");
+            
+
+            if (strStatus == "Paid")
+            {
+                ddlStatus.SelectedValue = strStatus;
+            }
+
+
+        }
 
         protected void FillGridView()
         {
