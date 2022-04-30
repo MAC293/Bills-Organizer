@@ -17,7 +17,6 @@ namespace BLL
 
         public OwnerBLL()
         {
-
         }
 
         public int ID
@@ -75,7 +74,6 @@ namespace BLL
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Exception: " + ex.Message);
             }
 
@@ -93,12 +91,10 @@ namespace BLL
                         return true;
                     }
                 }
-
             }
 
             catch (Exception ex)
             {
-
                 MessageBox.Show("Exception: " + ex.InnerException);
             }
 
@@ -119,7 +115,6 @@ namespace BLL
 
             catch (Exception ex)
             {
-
                 MessageBox.Show("Exception_ " + ex.Message);
             }
 
@@ -140,10 +135,8 @@ namespace BLL
                     if (ownerLogInDAL != null && PasswordComparison(Password.Trim(), ownerLogInDAL.Password.Trim()) &&
                         UsernameComparison(Name.Trim(), ownerLogInDAL.Name.Trim()))
                     {
-
                         if (ownerLogInDAL != null)
                         {
-
                             context.SaveChanges();
 
                             return true;
@@ -151,13 +144,10 @@ namespace BLL
                     }
 
                     return false;
-
                 }
-
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Exception: " + ex);
             }
 
@@ -223,15 +213,12 @@ namespace BLL
 
         private Boolean PasswordComparison(String input, String source)
         {
-
             if (String.Equals(input, source, StringComparison.CurrentCulture))
             {
-
                 return true;
             }
 
             return false;
         }
-
     }
 }
