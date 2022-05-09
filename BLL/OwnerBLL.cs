@@ -127,6 +127,7 @@ namespace BLL
             {
                 using (DBEntities context = new DBEntities())
                 {
+
                     var ownerLogInDAL = context.Owner.FirstOrDefault(owner => owner.Name == Name
                                                                               && owner.Password == Password);
                     //MessageBox.Show(ownerLogInDAL.Name);

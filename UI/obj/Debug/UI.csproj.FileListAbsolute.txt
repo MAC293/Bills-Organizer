@@ -23,6 +23,7 @@ E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.AI.Web.dll
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.AI.WindowsServer.dll
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.ApplicationInsights.dll
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\DAL.dll
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\BLL.pdb
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.AI.DependencyCollector.xml
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.AI.ServerTelemetryChannel.xml
@@ -30,10 +31,9 @@ E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.AI.Web.xml
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.AI.WindowsServer.xml
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.ApplicationInsights.xml
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\DAL.pdb
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\obj\Debug\UI.dll
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\obj\Debug\UI.pdb
-E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\DAL.dll
-E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\DAL.pdb
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\bin\DAL.dll.config
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\obj\Debug\UI.csproj.AssemblyReference.cache
 E:\Projects\IT\Bills Organizer\Bills Organizer\UI\obj\Debug\UI.csproj.CoreCompileInputs.cache

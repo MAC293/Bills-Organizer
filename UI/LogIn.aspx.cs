@@ -22,9 +22,7 @@ namespace UI
             OwnerBLL loginOwner = new OwnerBLL();
 
             loginOwner.Name = txtUsernameSI.Text;
-            MessageBox.Show(loginOwner.Name);
             loginOwner.Password = txtPasswordSI.Text;
-            MessageBox.Show(loginOwner.Password);
 
             if (loginOwner.LogIn())
             {
