@@ -10,11 +10,11 @@
         
         <%--Folders--%>
         <tr>
-            <td><asp:ImageButton ID="ibtnCable" runat="server" ImageUrl="Assets/Images/Cable.png" OnClick="ibtnCable_Click"/> 
-            <td><asp:ImageButton ID="ibtnElectricity" runat="server" ImageUrl="Assets/Images/Electricity.png" OnClick="ibtnElectricity_Click"/> 
-            <td><asp:ImageButton ID="ibtnGas" runat="server" ImageUrl="Assets/Images/Gas.png" OnClick="ibtnGas_Click"/>  
-            <td><asp:ImageButton ID="ibtnMobilePhone" runat="server" ImageUrl="Assets/Images/Mobile Phone.png" OnClick="ibtnMobilePhone_Click"/>  
-            <td><asp:ImageButton ID="ibtnWater" runat="server" ImageUrl="Assets/Images/Water.png" OnClick="ibtnWater_Click"/> 
+            <td><asp:ImageButton ID="ibtnCable" runat="server" ImageUrl="Assets/Images/Cable.png" OnClick="ibtnCable_Click"/></td>
+            <td><asp:ImageButton ID="ibtnElectricity" runat="server" ImageUrl="Assets/Images/Electricity.png" OnClick="ibtnElectricity_Click"/></td>
+            <td><asp:ImageButton ID="ibtnGas" runat="server" ImageUrl="Assets/Images/Gas.png" OnClick="ibtnGas_Click"/></td>  
+            <td><asp:ImageButton ID="ibtnMobilePhone" runat="server" ImageUrl="Assets/Images/Mobile Phone.png" OnClick="ibtnMobilePhone_Click"/></td>  
+            <td><asp:ImageButton ID="ibtnWater" runat="server" ImageUrl="Assets/Images/Water.png" OnClick="ibtnWater_Click"/></td> 
         </tr>
         
         <%--Names--%>

@@ -303,7 +303,7 @@ namespace UI
 
                 FillGridView();
 
-                //UnchangedStatus(e);
+                UnchangedStatus(rowIndex);
             }
             else if (e.CommandName == "btnCancel")
             {
@@ -316,25 +316,31 @@ namespace UI
             else if (e.CommandName == "btnView")
             {
 
-                UnchangedStatus(e);
+                //UnchangedStatus(e);
                 //MessageBox.Show(index.ToString());
             }
         }
 
-        protected void UnchangedStatus(GridViewCommandEventArgs e)
+        protected void UnchangedStatus(int e)
         {
-            var index = Convert.ToInt32(e.CommandArgument);
+            var index = Convert.ToInt32(e);
 
-            String strStatus = ((Label)grvFees.Rows[index].FindControl("lblStatus")).Text;
+            //MessageBox.Show(index.ToString());
 
-            var ddlStatus = (DropDownList)grvFees.Rows[grvFees.EditIndex].FindControl("ddlStatusUpdate");
-            
+            var billNumber = ((TextBox)grvFees.Rows[index].FindControl("txtNumberUpdate"));
 
-            if (strStatus == "Paid")
+            //MessageBox.Show(strStatus.Text);
+
+            int number = Int32.Parse(billNumber.Text);
+
+            String status = Helper.RetrieveStatus(number);
+
+            var ddl = ((DropDownList)grvFees.Rows[index].FindControl("ddlStatusUpdate"));
+
+            if (status == "Paid" && ddl.SelectedValue == "Unpaid")
             {
-                ddlStatus.SelectedValue = strStatus;
+                ddl.SelectedValue = status;
             }
-
 
         }
 

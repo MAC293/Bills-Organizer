@@ -199,10 +199,10 @@ namespace BLL
                             bills.Add(billBLL);
 
                         }
-                        
+
                     }
 
-                    
+
                 }
 
             }
@@ -228,7 +228,7 @@ namespace BLL
 
                     billDAL.Number = Number;
                     billDAL.DateIssue = StrToDate(DateIssue); ;
-                    billDAL.ExpiringDate = StrToDate(ExpiringDate); 
+                    billDAL.ExpiringDate = StrToDate(ExpiringDate);
                     billDAL.TotalPay = TotalPay;
                     billDAL.Status = StringToBool();
                     billDAL.Image = Document;
@@ -302,7 +302,7 @@ namespace BLL
 
                     MessageBox.Show("BillsQuatity, BLL: " + quantity);
                     return quantity;
-                    
+
                 }
             }
 
@@ -395,6 +395,7 @@ namespace BLL
             return date.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
         }
 
-
     }
+
+
 }
