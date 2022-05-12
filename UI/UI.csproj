@@ -116,6 +116,7 @@
     <Content Include="Assets\Images\Gas.png" />
     <Content Include="Assets\Images\Mobile Phone.png" />
     <Content Include="Assets\Images\Water.png" />
+    <Content Include="Assets\JS\DatePicker.js" />
     <Content Include="Bills.aspx" />
     <Content Include="Bills Organizer.ico" />
     <Content Include="Folder.aspx" />
@@ -174,9 +175,7 @@
       <Name>BLL</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\JS\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -1,10 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Bills.aspx.cs" Inherits="UI.Bills" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
     <asp:HyperLink  NavigateUrl="Folder.aspx" runat="server">Folders</asp:HyperLink>
+
     <asp:Label ID="lblFolderName" runat="server"></asp:Label>
 
     <asp:GridView ID="grvFees" runat="server" AutoGenerateColumns="False" ShowFooter="True" OnRowCommand="grvFees_RowCommand">
@@ -33,11 +36,14 @@
             <asp:TemplateField HeaderText="Date Of Issue">
 
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtDateIssueUpdate" runat="server" Text='<%# Bind("DateIssue") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtDateIssueUpdate" DataFormatString="{dd/MM/yy}" runat="server"></asp:TextBox>
+                    <%--<asp:TextBox ID="txtDateIssueUpdate" runat="server" Text='<%# Bind("DateIssue") %>'></asp:TextBox>--%>
                 </EditItemTemplate>
 
                 <FooterTemplate>
-                    <asp:TextBox ID="txtDateIssueInsert" runat="server"></asp:TextBox>
+                    <%--<asp:TextBox ID="txtDateIssueInsert" runat="server"></asp:TextBox>--%>
+                    <%--DataFormatString="{dd/MM/yyyy}"--%> 
+                    <asp:TextBox ID="txtDateIssueInsert" DataFormatString="{dd/MM/yy}" runat="server"></asp:TextBox>
                 </FooterTemplate>
 
                 <ItemTemplate>
