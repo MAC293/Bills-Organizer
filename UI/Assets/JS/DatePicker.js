@@ -1,6 +1,6 @@
 ﻿$(document).ready(function() {
 
-    $('input[id*=txtDateIssueInsert]').datepicker({
+    $("input[id*=txtDateIssueInsert]").datepicker({
 
         dateFormat: "dd/mm/yy",
         minDate: new Date(2022, 1, 1),
