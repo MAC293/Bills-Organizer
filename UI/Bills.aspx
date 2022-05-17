@@ -122,13 +122,11 @@
                 <EditItemTemplate>
                     <%--<asp:TextBox ID="txtTotalPayUpdate" runat="server" Text='<%# Bind("TotalPay") %>'></asp:TextBox>--%>
                     <asp:TextBox ID="txtBillUpdate" Text='<%# Bind("Document") %>' Placeholder=" ..." runat="server"></asp:TextBox>
-                    <asp:Button ID="btnUploadUpdate" runat="server" Text="Select Bill"></asp:Button>
+                    <asp:Button ID="btnUploadUpdate" CommandArgument="<%# Container.DataItemIndex %>" CommandName="btnUploadUpdate" runat="server" Text="Select Bill"></asp:Button>
                 </EditItemTemplate>
                 
                 <FooterTemplate>
                     <asp:TextBox ID="txtBillInsert" runat="server" Placeholder=" ..."></asp:TextBox>
-                    <%--Click="btnUpload_Click"--%>
-                     
                     <asp:Button ID="btnUpload" CommandArgument="<%# Container.DataItemIndex %>" CommandName="btnUpload" runat="server" Text="Select Bill"></asp:Button>
                 </FooterTemplate>
 

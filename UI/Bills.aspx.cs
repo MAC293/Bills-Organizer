@@ -21,11 +21,9 @@ namespace UI
     public partial class Bills : System.Web.UI.Page
     {
         private List<BillBLL> _Fees;
-
         private BillBLL _Bill;
-
-        //private Boolean _IsChanged;
         private String _FolderID;
+        private Byte[] _Document;
 
         public List<BillBLL> Fees
         {
@@ -46,6 +44,11 @@ namespace UI
             set { _FolderID = value; }
         }
 
+        public Byte[] Document
+        {
+            get { return _Document; }
+            set { _Document = value; }
+        }
 
         //public Boolean IsChanged
         //{
@@ -123,11 +126,6 @@ namespace UI
                         //Bill = new BillBLL();
                         BillBLL newBill = new BillBLL();
 
-                        //if (Bill.Bills != null)
-                        //{
-                        //    MessageBox.Show("Bill.Bills != null");
-                        //}
-
                         //Number
                         String strNumber = ((TextBox) grvFees.FooterRow.FindControl("txtNumberInsert")).Text;
                         int intNumber = int.Parse(strNumber);
@@ -168,32 +166,16 @@ namespace UI
 
                         if (status == "Paid")
                         {
-                            //status = "True";
-
-                            //Boolean paid = Boolean.Parse(status);
-                            //Bill.Status = paid;
-
-                            //ViewState["ddlStatusInsert"] = ddlStatus.SelectedValue;
-                            //IsChanged = false;
-                            //ViewState["IsChanged"] = IsChanged;
-
                             newBill.Status = "Paid";
                         }
                         else if (status == "Unpaid")
                         {
-                            //status = "False";
-
-                            //Boolean unpaid = Boolean.Parse(status);
-                            //Bill.Status = unpaid;
-
-                            //ViewState["ddlStatusInsert"] = ddlStatus.SelectedValue;
-                            //IsChanged = false;
-                            //ViewState["IsChanged"] = IsChanged;
-
                             newBill.Status = "Unpaid";
                         }
 
-                        newBill.Document = new Byte[0];
+                        //newBill.Document = new Byte[0];
+                        Document = (Byte[])ViewState["Document"];
+                        newBill.Document = Document;
 
                         newBill.Folder = FolderID;
 
@@ -323,8 +305,8 @@ namespace UI
                 {
                     OpenFileDialog openedFile = new OpenFileDialog();
 
-                    openedFile.Filter = "Image Files(*.jpg; *.png;)|*.jpg; *.png;";
-                    openedFile.Title = "Select You Bill";
+                    openedFile.Filter = "Image Format(*.jpg; *.png;)|*.jpg; *.png;";
+                    openedFile.Title = "Select your bill";
 
                     if (openedFile.ShowDialog() != DialogResult.OK)
                     {
@@ -332,52 +314,40 @@ namespace UI
                     }
                     else
                     {
+                        var strDocument = ((TextBox) grvFees.FooterRow.FindControl("txtBillInsert"));
+                        strDocument.Text = openedFile.FileName;
 
-                        
-                        //imgGameCover.Source = new BitmapImage(new Uri(openedFile.FileName));
-
-                        //byte[] buffer = File.ReadAllBytes(openedFile.FileName);
-
-                        //Game.Cover = buffer;
-
-                        //if (Game.Cover != null)
-                        //{
-                        //    MessageBox.Show("Game.Cover != null");
-                        //}
-
-                        //Game.AddCover(lbGames.SelectedItem.ToString());
+                        byte[] buffer = File.ReadAllBytes(openedFile.FileName);
+                        Document = buffer;
+                        ViewState["Document"] = Document;
                     }
-
                 }));
 
                 t.SetApartmentState(ApartmentState.STA);
                 t.Start();
                 t.Join();
+            }
+            else if (e.CommandName == "btnUploadUpdate")
+            {
+                Thread t = new Thread((ThreadStart) (() =>
+                {
+                    OpenFileDialog openedFile = new OpenFileDialog();
 
-                //OpenFileDialog openedFile = new OpenFileDialog();
+                    openedFile.Filter = "Image Format(*.jpg; *.png;)|*.jpg; *.png;";
+                    openedFile.Title = "Select a new bill to replace with";
 
-                //openedFile.Filter = "Image Files(*.jpg; *.png;)|*.jpg; *.png;";
-                //openedFile.Title = "Select You Bill";
+                    if (openedFile.ShowDialog() != DialogResult.OK)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                    }
+                }));
 
-                //if (openedFile.ShowDialog() != DialogResult.OK)
-                //{
-                //    return;
-                //}
-                //else
-                //{
-                //    //imgGameCover.Source = new BitmapImage(new Uri(openedFile.FileName));
-
-                //    //byte[] buffer = File.ReadAllBytes(openedFile.FileName);
-
-                //    //Game.Cover = buffer;
-
-                //    //if (Game.Cover != null)
-                //    //{
-                //    //    MessageBox.Show("Game.Cover != null");
-                //    //}
-
-                //    //Game.AddCover(lbGames.SelectedItem.ToString());
-                //}
+                t.SetApartmentState(ApartmentState.STA);
+                t.Start();
+                t.Join();
             }
         }
 
@@ -414,70 +384,6 @@ namespace UI
         {
             grvFees.DataSource = new object[] {null};
             grvFees.DataBind();
-        }
-
-        private void btnUpload_Click(object sender, EventArgs e)
-        {
-
-            //Thread t = new Thread((ThreadStart)(() =>
-            //{
-            //    OpenFileDialog openedFile = new OpenFileDialog();
-
-            //    openedFile.Filter = "Image Files(*.jpg; *.png;)|*.jpg; *.png;";
-            //    openedFile.Title = "Select You Bill";
-
-            //    if (openedFile.ShowDialog() == DialogResult.OK)
-            //    {
-            //        MessageBox.Show("Test");
-            //    }
-            //    else
-            //    {
-
-            //        return;
-            //        //imgGameCover.Source = new BitmapImage(new Uri(openedFile.FileName));
-
-            //        //byte[] buffer = File.ReadAllBytes(openedFile.FileName);
-
-            //        //Game.Cover = buffer;
-
-            //        //if (Game.Cover != null)
-            //        //{
-            //        //    MessageBox.Show("Game.Cover != null");
-            //        //}
-
-            //        //Game.AddCover(lbGames.SelectedItem.ToString());
-            //    }
-
-            //}));
-
-            //t.SetApartmentState(ApartmentState.STA);
-            //t.Start();
-            //t.Join();
-
-            //OpenFileDialog openedFile = new OpenFileDialog();
-
-            //openedFile.Filter = "Image Files(*.jpg; *.png;)|*.jpg; *.png;";
-            //openedFile.Title = "Select You Bill";
-
-            //if (openedFile.ShowDialog() != DialogResult.OK)
-            //{
-            //    return;
-            //}
-            //else
-            //{
-            //    //imgGameCover.Source = new BitmapImage(new Uri(openedFile.FileName));
-
-            //    //byte[] buffer = File.ReadAllBytes(openedFile.FileName);
-
-            //    //Game.Cover = buffer;
-
-            //    //if (Game.Cover != null)
-            //    //{
-            //    //    MessageBox.Show("Game.Cover != null");
-            //    //}
-
-            //    //Game.AddCover(lbGames.SelectedItem.ToString());
-            //}
         }
     }
 }

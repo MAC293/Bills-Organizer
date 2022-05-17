@@ -157,7 +157,6 @@ namespace BLL
 
                     billDAL.Number = Number;
                     billDAL.DateIssue = StrToDate(DateIssue);
-                    ;
                     billDAL.ExpiringDate = StrToDate(ExpiringDate);
                     billDAL.TotalPay = TotalPay;
                     billDAL.Status = StringToBool();
