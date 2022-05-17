@@ -6,8 +6,12 @@ using System.Net.Configuration;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
+using System.Data;
 using System.Windows.Forms;
 using BLL;
+using System.Threading;
+using System.Threading.Tasks;
 using Label = System.Web.UI.WebControls.Label;
 using TextBox = System.Web.UI.WebControls.TextBox;
 using View = System.Web.UI.WebControls.View;
@@ -17,7 +21,9 @@ namespace UI
     public partial class Bills : System.Web.UI.Page
     {
         private List<BillBLL> _Fees;
+
         private BillBLL _Bill;
+
         //private Boolean _IsChanged;
         private String _FolderID;
 
@@ -48,12 +54,12 @@ namespace UI
         //}
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblFolderName.Text = (String)Session["FolderName"];
+            lblFolderName.Text = (String) Session["FolderName"];
 
             if (!IsPostBack)
             {
                 //String folderID = (String)Session["FolderID"];
-                FolderID = (String)Session["FolderID"];
+                FolderID = (String) Session["FolderID"];
                 //MessageBox.Show(FolderID);
 
                 //Bill = new BillBLL();
@@ -92,20 +98,18 @@ namespace UI
                 {
                     DisplayEmptyGridView();
                 }
-
             }
             else
             {
-                Fees = (List<BillBLL>)ViewState["Fees"];
+                Fees = (List<BillBLL>) ViewState["Fees"];
 
-                FolderID = (String)Session["FolderID"];
+                FolderID = (String) Session["FolderID"];
 
                 //if (Fees == null)
                 //{
                 //    Fees = new List<BillBLL>();
                 //}
             }
-
         }
 
         protected void grvFees_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -125,7 +129,7 @@ namespace UI
                         //}
 
                         //Number
-                        String strNumber = ((TextBox)grvFees.FooterRow.FindControl("txtNumberInsert")).Text;
+                        String strNumber = ((TextBox) grvFees.FooterRow.FindControl("txtNumberInsert")).Text;
                         int intNumber = int.Parse(strNumber);
                         newBill.Number = intNumber;
 
@@ -135,7 +139,7 @@ namespace UI
                         //var datDateIssue = DateTime.ParseExact(strDateIssue, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                         //newBill.DateIssue = new DateTime(datDateIssue.Day + datDateIssue.Month + datDateIssue.Year).Date;
                         //String
-                        String strDateIssue = ((TextBox)grvFees.FooterRow.FindControl("txtDateIssueInsert")).Text;
+                        String strDateIssue = ((TextBox) grvFees.FooterRow.FindControl("txtDateIssueInsert")).Text;
                         newBill.DateIssue = strDateIssue;
                         //MessageBox.Show("DateIssue, UI: " + strDateIssue);
 
@@ -147,19 +151,20 @@ namespace UI
                         //var datExpiringDate = DateTime.ParseExact(strExpiringDate, "dd/MM/yyyy", CultureInfo.InstalledUICulture);
                         //newBill.ExpiringDate = datExpiringDate.Date;
                         //String
-                        String strExpiringDate = ((TextBox)grvFees.FooterRow.FindControl("txtExpiringDateInsert")).Text;
+                        String strExpiringDate =
+                            ((TextBox) grvFees.FooterRow.FindControl("txtExpiringDateInsert")).Text;
                         newBill.ExpiringDate = strExpiringDate;
                         //MessageBox.Show("ExpiringDate, UI: " + strExpiringDate);
 
 
                         //TotalPay
-                        String strTotalPay = ((TextBox)grvFees.FooterRow.FindControl("txtTotalPayInsert")).Text;
+                        String strTotalPay = ((TextBox) grvFees.FooterRow.FindControl("txtTotalPayInsert")).Text;
                         int intTotalPay = int.Parse(strTotalPay);
                         newBill.TotalPay = intTotalPay;
 
                         //Status
-                        var ddlStatus = ((DropDownList)grvFees.FooterRow.FindControl("ddlStatusInsert"));
-                        String status = ddlStatus.SelectedItem.Text;//ddlStatus.SelectedValue;
+                        var ddlStatus = ((DropDownList) grvFees.FooterRow.FindControl("ddlStatusInsert"));
+                        String status = ddlStatus.SelectedItem.Text; //ddlStatus.SelectedValue;
 
                         if (status == "Paid")
                         {
@@ -173,8 +178,6 @@ namespace UI
                             //ViewState["IsChanged"] = IsChanged;
 
                             newBill.Status = "Paid";
-
-
                         }
                         else if (status == "Unpaid")
                         {
@@ -207,9 +210,6 @@ namespace UI
                                 DisplayEmptyGridView();
                             }
                         }
-
-
-
                     }
                 }
                 catch (NullReferenceException ex)
@@ -229,27 +229,30 @@ namespace UI
 
                     BillBLL updateBill = new BillBLL();
 
-                    String strNumber = ((TextBox)grvFees.Rows[grvFees.EditIndex].FindControl("txtNumberUpdate")).Text;
+                    String strNumber = ((TextBox) grvFees.Rows[grvFees.EditIndex].FindControl("txtNumberUpdate")).Text;
                     int intNumber = int.Parse(strNumber);
                     updateBill.Number = intNumber;
 
                     var rowIndex = Convert.ToInt32(e.CommandArgument);
 
-                    String strDateIssue = ((TextBox)grvFees.Rows[grvFees.EditIndex].FindControl("txtDateIssueUpdate")).Text;
+                    String strDateIssue = ((TextBox) grvFees.Rows[grvFees.EditIndex].FindControl("txtDateIssueUpdate"))
+                        .Text;
                     updateBill.DateIssue = strDateIssue;
                     Fees[rowIndex].DateIssue = strDateIssue;
 
-                    String strExpiringDate = ((TextBox)grvFees.Rows[grvFees.EditIndex].FindControl("txtExpiringDateUpdate")).Text;
+                    String strExpiringDate =
+                        ((TextBox) grvFees.Rows[grvFees.EditIndex].FindControl("txtExpiringDateUpdate")).Text;
                     updateBill.ExpiringDate = strExpiringDate;
                     Fees[rowIndex].ExpiringDate = strExpiringDate;
 
 
-                    String strTotalPay = ((TextBox)grvFees.Rows[grvFees.EditIndex].FindControl("txtTotalPayUpdate")).Text;
+                    String strTotalPay = ((TextBox) grvFees.Rows[grvFees.EditIndex].FindControl("txtTotalPayUpdate"))
+                        .Text;
                     int intTotalPay = int.Parse(strTotalPay);
                     updateBill.TotalPay = intTotalPay;
                     Fees[rowIndex].TotalPay = intTotalPay;
 
-                    var ddlStatus = (DropDownList)grvFees.Rows[grvFees.EditIndex].FindControl("ddlStatusUpdate");
+                    var ddlStatus = (DropDownList) grvFees.Rows[grvFees.EditIndex].FindControl("ddlStatusUpdate");
                     updateBill.Status = ddlStatus.SelectedValue;
                     Fees[rowIndex].Status = ddlStatus.SelectedValue;
 
@@ -262,8 +265,6 @@ namespace UI
                     grvFees.EditIndex = -1;
 
                     FillGridView();
-
-
                 }
                 catch (NullReferenceException ex)
                 {
@@ -280,7 +281,7 @@ namespace UI
 
                 var index = Convert.ToInt32(e.CommandArgument);
 
-                String strNumber = ((Label)grvFees.Rows[index].FindControl("lblNumberDelete")).Text;
+                String strNumber = ((Label) grvFees.Rows[index].FindControl("lblNumberDelete")).Text;
                 int intNumber = int.Parse(strNumber);
 
                 deleteBill.Number = intNumber;
@@ -295,11 +296,10 @@ namespace UI
                 {
                     DisplayEmptyGridView();
                 }
-
             }
             else if (e.CommandName == "btnEdit")
             {
-                int rowIndex = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
+                int rowIndex = ((GridViewRow) ((LinkButton) e.CommandSource).NamingContainer).RowIndex;
                 grvFees.EditIndex = rowIndex;
 
                 FillGridView();
@@ -311,14 +311,73 @@ namespace UI
                 grvFees.EditIndex = -1;
 
                 FillGridView();
-
-
             }
             else if (e.CommandName == "btnView")
             {
-
                 //UnchangedStatus(e);
                 //MessageBox.Show(index.ToString());
+            }
+            else if (e.CommandName == "btnUpload")
+            {
+                Thread t = new Thread((ThreadStart) (() =>
+                {
+                    OpenFileDialog openedFile = new OpenFileDialog();
+
+                    openedFile.Filter = "Image Files(*.jpg; *.png;)|*.jpg; *.png;";
+                    openedFile.Title = "Select You Bill";
+
+                    if (openedFile.ShowDialog() != DialogResult.OK)
+                    {
+                        return;
+                    }
+                    else
+                    {
+
+                        
+                        //imgGameCover.Source = new BitmapImage(new Uri(openedFile.FileName));
+
+                        //byte[] buffer = File.ReadAllBytes(openedFile.FileName);
+
+                        //Game.Cover = buffer;
+
+                        //if (Game.Cover != null)
+                        //{
+                        //    MessageBox.Show("Game.Cover != null");
+                        //}
+
+                        //Game.AddCover(lbGames.SelectedItem.ToString());
+                    }
+
+                }));
+
+                t.SetApartmentState(ApartmentState.STA);
+                t.Start();
+                t.Join();
+
+                //OpenFileDialog openedFile = new OpenFileDialog();
+
+                //openedFile.Filter = "Image Files(*.jpg; *.png;)|*.jpg; *.png;";
+                //openedFile.Title = "Select You Bill";
+
+                //if (openedFile.ShowDialog() != DialogResult.OK)
+                //{
+                //    return;
+                //}
+                //else
+                //{
+                //    //imgGameCover.Source = new BitmapImage(new Uri(openedFile.FileName));
+
+                //    //byte[] buffer = File.ReadAllBytes(openedFile.FileName);
+
+                //    //Game.Cover = buffer;
+
+                //    //if (Game.Cover != null)
+                //    //{
+                //    //    MessageBox.Show("Game.Cover != null");
+                //    //}
+
+                //    //Game.AddCover(lbGames.SelectedItem.ToString());
+                //}
             }
         }
 
@@ -328,7 +387,7 @@ namespace UI
 
             //MessageBox.Show(index.ToString());
 
-            var billNumber = ((TextBox)grvFees.Rows[index].FindControl("txtNumberUpdate"));
+            var billNumber = ((TextBox) grvFees.Rows[index].FindControl("txtNumberUpdate"));
 
             //MessageBox.Show(strStatus.Text);
 
@@ -336,13 +395,12 @@ namespace UI
 
             String status = Helper.RetrieveStatus(number);
 
-            var ddl = ((DropDownList)grvFees.Rows[index].FindControl("ddlStatusUpdate"));
+            var ddl = ((DropDownList) grvFees.Rows[index].FindControl("ddlStatusUpdate"));
 
             if (status == "Paid" && ddl.SelectedValue == "Unpaid")
             {
                 ddl.SelectedValue = status;
             }
-
         }
 
         protected void FillGridView()
@@ -354,8 +412,72 @@ namespace UI
 
         protected void DisplayEmptyGridView()
         {
-            grvFees.DataSource = new object[] { null };
+            grvFees.DataSource = new object[] {null};
             grvFees.DataBind();
+        }
+
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+
+            //Thread t = new Thread((ThreadStart)(() =>
+            //{
+            //    OpenFileDialog openedFile = new OpenFileDialog();
+
+            //    openedFile.Filter = "Image Files(*.jpg; *.png;)|*.jpg; *.png;";
+            //    openedFile.Title = "Select You Bill";
+
+            //    if (openedFile.ShowDialog() == DialogResult.OK)
+            //    {
+            //        MessageBox.Show("Test");
+            //    }
+            //    else
+            //    {
+
+            //        return;
+            //        //imgGameCover.Source = new BitmapImage(new Uri(openedFile.FileName));
+
+            //        //byte[] buffer = File.ReadAllBytes(openedFile.FileName);
+
+            //        //Game.Cover = buffer;
+
+            //        //if (Game.Cover != null)
+            //        //{
+            //        //    MessageBox.Show("Game.Cover != null");
+            //        //}
+
+            //        //Game.AddCover(lbGames.SelectedItem.ToString());
+            //    }
+
+            //}));
+
+            //t.SetApartmentState(ApartmentState.STA);
+            //t.Start();
+            //t.Join();
+
+            //OpenFileDialog openedFile = new OpenFileDialog();
+
+            //openedFile.Filter = "Image Files(*.jpg; *.png;)|*.jpg; *.png;";
+            //openedFile.Title = "Select You Bill";
+
+            //if (openedFile.ShowDialog() != DialogResult.OK)
+            //{
+            //    return;
+            //}
+            //else
+            //{
+            //    //imgGameCover.Source = new BitmapImage(new Uri(openedFile.FileName));
+
+            //    //byte[] buffer = File.ReadAllBytes(openedFile.FileName);
+
+            //    //Game.Cover = buffer;
+
+            //    //if (Game.Cover != null)
+            //    //{
+            //    //    MessageBox.Show("Game.Cover != null");
+            //    //}
+
+            //    //Game.AddCover(lbGames.SelectedItem.ToString());
+            //}
         }
     }
 }

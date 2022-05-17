@@ -5,8 +5,8 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
-    <asp:HyperLink  NavigateUrl="Folder.aspx" runat="server">Folders</asp:HyperLink>
+
+    <asp:HyperLink NavigateUrl="Folder.aspx" runat="server">Folders</asp:HyperLink>
 
     <asp:Label ID="lblFolderName" runat="server"></asp:Label>
 
@@ -31,19 +31,19 @@
 
             </asp:TemplateField>
             <%--Number--%>
-            
+
             <%--DateOfIssue--%>
             <asp:TemplateField HeaderText="Date Of Issue">
 
                 <EditItemTemplate>
-                    <%--DataFormatString="{dd/MM/yy}"--%> 
+                    <%--DataFormatString="{dd/MM/yy}"--%>
                     <asp:TextBox ID="txtDateIssueUpdate" Text='<%# Bind("DateIssue") %>' runat="server"></asp:TextBox>
                     <%--<asp:TextBox ID="txtDateIssueUpdate" runat="server" Text='<%# Bind("DateIssue") %>'></asp:TextBox>--%>
                 </EditItemTemplate>
 
                 <FooterTemplate>
                     <%--<asp:TextBox ID="txtDateIssueInsert" runat="server"></asp:TextBox>--%>
-                    <%--DataFormatString="{dd/MM/yyyy}"--%> 
+                    <%--DataFormatString="{dd/MM/yyyy}"--%>
                     <asp:TextBox ID="txtDateIssueInsert" runat="server"></asp:TextBox>
                 </FooterTemplate>
 
@@ -53,7 +53,7 @@
 
             </asp:TemplateField>
             <%--DateOfIssue--%>
-            
+
             <%--Expiring Date--%>
             <asp:TemplateField HeaderText="Expiring Date">
 
@@ -71,7 +71,7 @@
 
             </asp:TemplateField>
             <%--ExpiringDate--%>
-            
+
             <%--TotalPay--%>
             <asp:TemplateField HeaderText="Total To Pay">
 
@@ -89,10 +89,10 @@
 
             </asp:TemplateField>
             <%--TotalPay--%>
-            
+
             <%--Status--%>
             <asp:TemplateField HeaderText="Status">
-                        
+
                 <EditItemTemplate>
                     <%--<asp:DropDownList ID="ddlStatusUpdate"  runat="server"></asp:DropDownList>--%>
                     <asp:DropDownList ID="ddlStatusUpdate" runat="server">
@@ -100,7 +100,7 @@
                         <asp:ListItem Text="Paid" Value="Paid"></asp:ListItem>
                     </asp:DropDownList>
                 </EditItemTemplate>
-                
+
                 <FooterTemplate>
                     <%--<asp:DropDownList ID="ddlStatusInsert" runat="server"></asp:DropDownList>--%>
                     <asp:DropDownList ID="ddlStatusInsert" runat="server">
@@ -110,26 +110,49 @@
                 </FooterTemplate>
 
                 <ItemTemplate >
-                    <asp:Label ID="lblStatus" runat="server" Text='<%# Bind("Status") %>' ></asp:Label>
+                    <asp:Label ID="lblStatus" runat="server" Text='<%# Bind("Status") %>'></asp:Label>
                 </ItemTemplate>
-                
+
             </asp:TemplateField>
             <%--Status--%>
-            
+
+            <%--Document--%>
+            <asp:TemplateField HeaderText="Bill">
+
+                <EditItemTemplate>
+                    <%--<asp:TextBox ID="txtTotalPayUpdate" runat="server" Text='<%# Bind("TotalPay") %>'></asp:TextBox>--%>
+                    <asp:TextBox ID="txtBillUpdate" Text='<%# Bind("Document") %>' Placeholder=" ..." runat="server"></asp:TextBox>
+                    <asp:Button ID="btnUploadUpdate" runat="server" Text="Select Bill"></asp:Button>
+                </EditItemTemplate>
+                
+                <FooterTemplate>
+                    <asp:TextBox ID="txtBillInsert" runat="server" Placeholder=" ..."></asp:TextBox>
+                    <%--Click="btnUpload_Click"--%>
+                     
+                    <asp:Button ID="btnUpload" CommandArgument="<%# Container.DataItemIndex %>" CommandName="btnUpload" runat="server" Text="Select Bill"></asp:Button>
+                </FooterTemplate>
+
+                <ItemTemplate>
+                    <asp:Label ID="lblBillDelete" runat="server" Text='<%# Bind("Document") %>'></asp:Label>
+                </ItemTemplate>
+
+            </asp:TemplateField>
+            <%--Document--%>
+
             <%--Actions--%>
             <asp:TemplateField HeaderText="Actions">
                 <ItemTemplate>
-                    <asp:Button ID="btnView" runat="server" Text="View" CommandName="btnView" CommandArgument="<%# Container.DataItemIndex %>" />
-                    <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CommandName="btnCancel" />
-                    <asp:LinkButton ID="btnEdit" runat="server" Text="Edit" CommandName="btnEdit" />
-                    <asp:Button ID="btnUpdate" runat="server" Text="Update" CommandName="btnUpdate" CommandArgument="<%# Container.DataItemIndex %>" />
+                    <asp:Button ID="btnView" runat="server" Text="View" CommandName="btnView" CommandArgument="<%# Container.DataItemIndex %>"/>
+                    <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CommandName="btnCancel"/>
+                    <asp:LinkButton ID="btnEdit" runat="server" Text="Edit" CommandName="btnEdit"/>
+                    <asp:Button ID="btnUpdate" runat="server" Text="Update" CommandName="btnUpdate" CommandArgument="<%# Container.DataItemIndex %>"/>
                     <asp:Button ID="btnDelete" runat="server" Text="Delete" CommandName="btnDelete" CommandArgument="<%# Container.DataItemIndex %>"/>
                 </ItemTemplate>
-                        
+
                 <FooterTemplate>
                     <asp:Button ID="btnAdd" runat="server" Text="Add" CommandName="btnAdd" CausesValidation="True"/>
                 </FooterTemplate>
-              
+
             </asp:TemplateField>
             <%--Actions--%>
 
