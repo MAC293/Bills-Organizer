@@ -20,6 +20,7 @@ namespace BLL
         private String _Status;
         private Byte[] _Document;
         private String _Folder;
+        private String _IsDocument;
         //private List<BillBLL> _Bills;
 
         public BillBLL()
@@ -67,6 +68,11 @@ namespace BLL
         {
             get { return _Folder; }
             set { _Folder = value; }
+        }
+        public String IsDocument
+        {
+            get { return _IsDocument; }
+            set { _IsDocument = value; }
         }
 
         //public List<BillBLL> Bills
@@ -127,7 +133,7 @@ namespace BLL
                             billBLL.ExpiringDate = DateToStr(billDAL.ElementAt(i).ExpiringDate);
                             billBLL.TotalPay = billDAL.ElementAt(i).TotalPay;
                             billBLL.Status = BoolToString(billDAL.ElementAt(i).Status);
-                            billBLL.Document = billDAL.ElementAt(i).Image;
+                            //billBLL.Document = billDAL.ElementAt(i).Image;
                             billBLL.Folder = billDAL.ElementAt(i).Folder;
 
                             //MessageBox.Show("RetrieveBills, BLL " + billBLL.Number.ToString());

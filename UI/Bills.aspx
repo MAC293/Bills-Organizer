@@ -120,18 +120,19 @@
             <asp:TemplateField HeaderText="Bill">
 
                 <EditItemTemplate>
-                    <%--<asp:TextBox ID="txtTotalPayUpdate" runat="server" Text='<%# Bind("TotalPay") %>'></asp:TextBox>--%>
-                    <asp:TextBox ID="txtBillUpdate" Text='<%# Bind("Document") %>' Placeholder=" ..." runat="server"></asp:TextBox>
-                    <asp:Button ID="btnUploadUpdate" CommandArgument="<%# Container.DataItemIndex %>" CommandName="btnUploadUpdate" runat="server" Text="Select Bill"></asp:Button>
+                    <%--Text='<%# Bind("Document") %>' Placeholder=" ..."--%>
+                    <asp:TextBox ID="txtBillUpdate" runat="server"></asp:TextBox>
+                    <asp:Button ID="btnUploadUpdate" CommandArgument="<%# Container.DataItemIndex %>" CommandName="btnUploadUpdate" runat="server" Text=" Select Bill "></asp:Button>
                 </EditItemTemplate>
                 
                 <FooterTemplate>
                     <asp:TextBox ID="txtBillInsert" runat="server" Placeholder=" ..."></asp:TextBox>
-                    <asp:Button ID="btnUpload" CommandArgument="<%# Container.DataItemIndex %>" CommandName="btnUpload" runat="server" Text="Select Bill"></asp:Button>
+                    <asp:Button ID="btnUpload" CommandArgument="<%# Container.DataItemIndex %>" CommandName="btnUpload" runat="server" Text=" Select Bill "></asp:Button>
                 </FooterTemplate>
 
                 <ItemTemplate>
-                    <asp:Label ID="lblBillDelete" runat="server" Text='<%# Bind("Document") %>'></asp:Label>
+                    <%--Text='<%# Bind("Document") %>'--%>
+                    <asp:Label ID="lblBillDelete" runat="server" Text='<%# Bind("IsDocument") %>'></asp:Label>
                 </ItemTemplate>
 
             </asp:TemplateField>
@@ -140,15 +141,15 @@
             <%--Actions--%>
             <asp:TemplateField HeaderText="Actions">
                 <ItemTemplate>
-                    <asp:Button ID="btnView" runat="server" Text="View" CommandName="btnView" CommandArgument="<%# Container.DataItemIndex %>"/>
+                    <asp:Button ID="btnView" runat="server" Text=" View " CommandName="btnView" CommandArgument="<%# Container.DataItemIndex %>"/>
                     <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CommandName="btnCancel"/>
                     <asp:LinkButton ID="btnEdit" runat="server" Text="Edit" CommandName="btnEdit"/>
-                    <asp:Button ID="btnUpdate" runat="server" Text="Update" CommandName="btnUpdate" CommandArgument="<%# Container.DataItemIndex %>"/>
-                    <asp:Button ID="btnDelete" runat="server" Text="Delete" CommandName="btnDelete" CommandArgument="<%# Container.DataItemIndex %>"/>
+                    <asp:Button ID="btnUpdate" runat="server" Text=" Update " CommandName="btnUpdate" CommandArgument="<%# Container.DataItemIndex %>"/>
+                    <asp:Button ID="btnDelete" runat="server" Text=" Delete " CommandName="btnDelete" CommandArgument="<%# Container.DataItemIndex %>"/>
                 </ItemTemplate>
 
                 <FooterTemplate>
-                    <asp:Button ID="btnAdd" runat="server" Text="Add" CommandName="btnAdd" CausesValidation="True"/>
+                    <asp:Button ID="btnAdd" runat="server" Text=" Add " CommandName="btnAdd" CausesValidation="True"/>
                 </FooterTemplate>
 
             </asp:TemplateField>
