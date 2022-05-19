@@ -158,14 +158,19 @@ namespace UI
                             newBill.Status = "Unpaid";
                         }
 
-                        //newBill.Document = new Byte[0];
                         Document = (Byte[])ViewState["Document"];
-                        newBill.Document = Document;
 
-                        //String strDocument = ((Label)grvFees.FooterRow.FindControl("lblBillDelete")).Text;
-                        //strDocument = "There's a bill";
-
-                        newBill.IsDocument = "There's a bill";
+                        if (Document == null)
+                        {
+                            newBill.Document = new Byte[0];
+                            //newBill.Document = null;
+                            newBill.IsDocument = "There's no bill";
+                        }
+                        else
+                        {
+                            newBill.Document = Document;
+                            newBill.IsDocument = "There's a bill";
+                        }
 
                         newBill.Folder = FolderID;
 

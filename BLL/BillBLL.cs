@@ -115,7 +115,7 @@ namespace BLL
                     var billDAL = context.Bill.Select((bill =>
                         new
                         {
-                            bill.Number, bill.DateIssue, bill.ExpiringDate, bill.TotalPay, bill.Status, bill.Image,
+                            bill.Number, bill.DateIssue, bill.ExpiringDate, bill.TotalPay, bill.Status,
                             bill.Folder
                         })).ToList();
 
@@ -133,6 +133,7 @@ namespace BLL
                             billBLL.ExpiringDate = DateToStr(billDAL.ElementAt(i).ExpiringDate);
                             billBLL.TotalPay = billDAL.ElementAt(i).TotalPay;
                             billBLL.Status = BoolToString(billDAL.ElementAt(i).Status);
+                            billBLL.IsDocument = CheckImage(folderID);
                             //billBLL.Document = billDAL.ElementAt(i).Image;
                             billBLL.Folder = billDAL.ElementAt(i).Folder;
 
@@ -148,6 +149,37 @@ namespace BLL
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        public String CheckImage(String folderID)
+        {
+            try
+            {
+                using (DBEntities context = new DBEntities())
+                {
+                    var billDAL = context.Bill.FirstOrDefault(bill => bill.Folder == folderID);
+
+                    if (billDAL.Image != null)
+                    {
+                        return "There's a bill";
+                    }
+
+                    if (billDAL.Image == new Byte[0])
+                    {
+                        return "There's no bill";
+                    }
+
+                    //return "There's no bill";
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception: " + ex);
+            }
+
+            return String.Empty;
         }
 
 
