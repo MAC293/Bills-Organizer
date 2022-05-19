@@ -135,7 +135,7 @@ namespace BLL
                             billBLL.ExpiringDate = DateToStr(billDAL.ElementAt(i).ExpiringDate);
                             billBLL.TotalPay = billDAL.ElementAt(i).TotalPay;
                             billBLL.Status = BoolToString(billDAL.ElementAt(i).Status);
-                            billBLL.IsDocument = CheckImage(folderID);
+                            billBLL.IsDocument = CheckImage(billBLL.Number);
                             //billBLL.Document = billDAL.ElementAt(i).Image;
                             billBLL.Folder = billDAL.ElementAt(i).Folder;
 
@@ -153,13 +153,13 @@ namespace BLL
             }
         }
 
-        public String CheckImage(String folderID)
+        public String CheckImage(int number)
         {
             try
             {
                 using (DBEntities context = new DBEntities())
                 {
-                    var billDAL = context.Bill.FirstOrDefault(bill => bill.Folder == folderID);
+                    var billDAL = context.Bill.FirstOrDefault(bill => bill.Number == number);
 
                     if (billDAL != null)
                     {
@@ -167,13 +167,9 @@ namespace BLL
                         {
                             return "There's a bill";
                         }
-                        else
-                        {
-                            return "There's no bill";
-                        }
 
+                        return "There's no bill";
                     }
-
                 }
             }
             catch (Exception ex)

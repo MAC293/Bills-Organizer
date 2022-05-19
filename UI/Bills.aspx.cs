@@ -187,6 +187,8 @@ namespace UI
                                 DisplayEmptyGridView();
                             }
                         }
+
+                        ViewState["Document"] = null;
                     }
                 }
                 catch (NullReferenceException ex)
