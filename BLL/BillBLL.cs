@@ -20,6 +20,7 @@ namespace BLL
         private String _Status;
         private Byte[] _Document;
         private String _Folder;
+
         private String _IsDocument;
         //private List<BillBLL> _Bills;
 
@@ -69,6 +70,7 @@ namespace BLL
             get { return _Folder; }
             set { _Folder = value; }
         }
+
         public String IsDocument
         {
             get { return _IsDocument; }
@@ -159,18 +161,18 @@ namespace BLL
                 {
                     var billDAL = context.Bill.FirstOrDefault(bill => bill.Folder == folderID);
 
-                    if (billDAL.Image != null)
+                    if (billDAL != null)
                     {
-                        return "There's a bill";
+                        if (billDAL.Image != null)
+                        {
+                            return "There's a bill";
+                        }
+                        else
+                        {
+                            return "There's no bill";
+                        }
+
                     }
-
-                    if (billDAL.Image == null)
-                    {
-                        return "There's no bill";
-                    }
-
-                    //return "There's no bill";
-
 
                 }
             }

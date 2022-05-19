@@ -9,7 +9,7 @@
     <Property Name="ExpiringDate" Type="date" Nullable="false" />
     <Property Name="TotalPay" Type="int" Nullable="false" />
     <Property Name="Status" Type="bit" Nullable="false" />
-    <Property Name="Image" Type="varbinary(max)" Nullable="false" />
+    <Property Name="Image" Type="varbinary(max)" />
     <Property Name="Folder" Type="nchar" MaxLength="10" Nullable="false" />
   </EntityType>
   <EntityType Name="Folder">

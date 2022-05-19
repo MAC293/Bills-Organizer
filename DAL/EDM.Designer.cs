@@ -174,9 +174,8 @@ namespace DAL
         /// <param name="expiringDate">Initial value of the ExpiringDate property.</param>
         /// <param name="totalPay">Initial value of the TotalPay property.</param>
         /// <param name="status">Initial value of the Status property.</param>
-        /// <param name="image">Initial value of the Image property.</param>
         /// <param name="folder">Initial value of the Folder property.</param>
-        public static Bill CreateBill(global::System.Int32 number, global::System.DateTime dateIssue, global::System.DateTime expiringDate, global::System.Int32 totalPay, global::System.Boolean status, global::System.Byte[] image, global::System.String folder)
+        public static Bill CreateBill(global::System.Int32 number, global::System.DateTime dateIssue, global::System.DateTime expiringDate, global::System.Int32 totalPay, global::System.Boolean status, global::System.String folder)
         {
             Bill bill = new Bill();
             bill.Number = number;
@@ -184,7 +183,6 @@ namespace DAL
             bill.ExpiringDate = expiringDate;
             bill.TotalPay = totalPay;
             bill.Status = status;
-            bill.Image = image;
             bill.Folder = folder;
             return bill;
         }
@@ -319,7 +317,7 @@ namespace DAL
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.Byte[] Image
         {
@@ -331,7 +329,7 @@ namespace DAL
             {
                 OnImageChanging(value);
                 ReportPropertyChanging("Image");
-                _Image = StructuralObject.SetValidValue(value, false, "Image");
+                _Image = StructuralObject.SetValidValue(value, true, "Image");
                 ReportPropertyChanged("Image");
                 OnImageChanged();
             }

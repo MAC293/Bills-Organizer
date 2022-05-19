@@ -14,7 +14,7 @@
           <Property Name="ExpiringDate" Type="date" Nullable="false" />
           <Property Name="TotalPay" Type="int" Nullable="false" />
           <Property Name="Status" Type="bit" Nullable="false" />
-          <Property Name="Image" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Image" Type="varbinary(max)" />
           <Property Name="Folder" Type="nchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="Folder">
@@ -85,7 +85,7 @@
           <Property Name="ExpiringDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TotalPay" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
-          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Folder" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Folder1" Relationship="Self.FK_Folder_Bill" FromRole="Bill" ToRole="Folder" />
         </EntityType>
