@@ -164,7 +164,7 @@ namespace BLL
                         return "There's a bill";
                     }
 
-                    if (billDAL.Image == new Byte[0])
+                    if (billDAL.Image == null)
                     {
                         return "There's no bill";
                     }

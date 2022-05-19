@@ -162,8 +162,8 @@ namespace UI
 
                         if (Document == null)
                         {
-                            newBill.Document = new Byte[0];
-                            //newBill.Document = null;
+                            //newBill.Document = new Byte[0];
+                            newBill.Document = null;
                             newBill.IsDocument = "There's no bill";
                         }
                         else
