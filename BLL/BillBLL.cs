@@ -77,11 +77,6 @@ namespace BLL
             set { _IsDocument = value; }
         }
 
-        //public List<BillBLL> Bills
-        //{
-        //    get { return _Bills; }
-        //    set { _Bills = value; }
-        //}
         public Boolean BillsExistence(String folderID)
         {
             try

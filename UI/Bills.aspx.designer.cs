@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UI {
-    
-    
-    public partial class Bills {
-        
+namespace UI
+{
+
+
+    public partial class Bills
+    {
+
         /// <summary>
         /// lblFolderName control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblFolderName;
-        
+
         /// <summary>
         /// grvFees control.
         /// </summary>
