@@ -121,7 +121,7 @@
 
                 <EditItemTemplate>
                     <%--Text='<%# Bind("Document") %>' Placeholder=" ..."--%>
-                    <asp:TextBox ID="txtBillUpdate" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtBillUpdate" runat="server" Placeholder=" ..."></asp:TextBox>
                     <asp:Button ID="btnUploadUpdate" CommandArgument="<%# Container.DataItemIndex %>" CommandName="btnUploadUpdate" runat="server" Text=" Select Bill "></asp:Button>
                 </EditItemTemplate>
                 

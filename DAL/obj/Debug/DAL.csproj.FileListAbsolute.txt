@@ -7,4 +7,3 @@ E:\Projects\IT\Bills Organizer\Bills Organizer\DAL\obj\Debug\DAL.csproj.CoreComp
 E:\Projects\IT\Bills Organizer\Bills Organizer\DAL\obj\Debug\DAL.csproj.CopyComplete
 E:\Projects\IT\Bills Organizer\Bills Organizer\DAL\obj\Debug\DAL.dll
 E:\Projects\IT\Bills Organizer\Bills Organizer\DAL\obj\Debug\DAL.pdb
-E:\Projects\IT\Bills Organizer\Bills Organizer\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache

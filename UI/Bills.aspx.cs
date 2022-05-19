@@ -235,7 +235,24 @@ namespace UI
                     updateBill.Status = ddlStatus.SelectedValue;
                     Fees[rowIndex].Status = ddlStatus.SelectedValue;
 
-                    updateBill.Document = new Byte[0];
+                    //updateBill.Document = new Byte[0];
+
+                    Document = (Byte[])ViewState["Document"];
+
+                    if (Document != null)
+                    {
+
+                        updateBill.Document = Document;
+                        Fees[rowIndex].IsDocument = "There's a bill";
+                        //newBill.Document = new Byte[0];
+                        //updateBill.Document = null;
+                        //updateBill.IsDocument = "There's no bill";
+                    }
+                    else
+                    {
+                        //updateBill.Document = Document;
+                        //updateBill.IsDocument = "There's a bill";
+                    }
 
                     updateBill.Folder = FolderID;
 
@@ -244,6 +261,8 @@ namespace UI
                     grvFees.EditIndex = -1;
 
                     FillGridView();
+
+                    ViewState["Document"] = null;
                 }
                 catch (NullReferenceException ex)
                 {
@@ -339,6 +358,9 @@ namespace UI
                     }
                     else
                     {
+                        byte[] buffer = File.ReadAllBytes(openedFile.FileName);
+                        Document = buffer;
+                        ViewState["Document"] = Document;
                     }
                 }));
 
