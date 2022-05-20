@@ -273,7 +273,6 @@ namespace BLL
                     if (billDAL != null)
                     {
                         billDAL.DateIssue = StrToDate(DateIssue);
-                        ;
                         billDAL.ExpiringDate = StrToDate(ExpiringDate);
                         billDAL.TotalPay = TotalPay;
                         billDAL.Status = StringToBool();
