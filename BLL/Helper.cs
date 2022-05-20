@@ -37,5 +37,30 @@ namespace BLL
 
             return String.Empty;
         }
+
+        public static Byte[] RetrieveImage(int billNumber)
+        {
+            try
+            {
+                using (DBEntities context = new DBEntities())
+                {
+                    var billDAL = context.Bill.FirstOrDefault(bill => bill.Number == billNumber);
+
+
+                    if (billDAL != null)
+                    {
+                        return billDAL.Image;
+                    }
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return new Byte[0];
+        }
+
     }
 }

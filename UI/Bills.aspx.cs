@@ -311,8 +311,13 @@ namespace UI
             }
             else if (e.CommandName == "btnView")
             {
-                //UnchangedStatus(e);
-                //MessageBox.Show(index.ToString());
+                int clicked = Convert.ToInt32(e.CommandArgument);
+                //MessageBox.Show(Fees[clicked].Number.ToString());
+
+                //int billNumber = Helper.BillNumber(clicked);
+
+                Byte[] displayImage = Helper.RetrieveImage(Fees[clicked].Number);
+
             }
             else if (e.CommandName == "btnUpload")
             {

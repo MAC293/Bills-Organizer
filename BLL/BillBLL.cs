@@ -112,7 +112,11 @@ namespace BLL
                     var billDAL = context.Bill.Select((bill =>
                         new
                         {
-                            bill.Number, bill.DateIssue, bill.ExpiringDate, bill.TotalPay, bill.Status,
+                            bill.Number,
+                            bill.DateIssue,
+                            bill.ExpiringDate,
+                            bill.TotalPay,
+                            bill.Status,
                             bill.Folder
                         })).ToList();
 
@@ -237,7 +241,7 @@ namespace BLL
                 using (DBEntities context = new DBEntities())
                 {
                     var billDAL = context.Bill.Select((bill =>
-                        new {bill.Folder})).ToList();
+                        new { bill.Folder })).ToList();
 
 
                     for (int i = 0; i < billDAL.Count(); i++)
