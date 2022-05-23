@@ -159,7 +159,7 @@
     </asp:GridView>
 
     <%--Image Modal--%>
-    <div id="image" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <%--<div id="image" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
 
         <div class="modal-dialog" role="document">
 
@@ -180,6 +180,6 @@
             </div>
 
         </div>
-    </div>
+    </div>--%>
     <%--Image Modal--%>
 </asp:Content>

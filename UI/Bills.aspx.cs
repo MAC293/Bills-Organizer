@@ -321,8 +321,8 @@ namespace UI
                 //imgBill.ImageUrl = displayImage;
 
 
-                ClientScript.RegisterStartupScript(GetType(), "ModalScript",
-                    "$(function(){ $('#image').modal('show'); });", true);
+                //ClientScript.RegisterStartupScript(GetType(), "ModalScript",
+                //    "$(function(){ $('#image').modal('show'); });", true);
             }
             else if (e.CommandName == "btnUpload")
             {
